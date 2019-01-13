@@ -1,0 +1,23 @@
+plugins {
+    id 'java'
+    id 'war'
+    id 'idea'
+}
+apply from: 'gretty.plugin'
+
+group 'fwwbjnu'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile 'org.mockito:mockito-core:2.7.19'
+    compile('net.sf.json-lib:json-lib:2.4:jdk15')
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
+}
