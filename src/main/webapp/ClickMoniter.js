@@ -66,7 +66,8 @@ function recordClick(element) {//记录下被点击的元素
     var data = {
         baseURI: element.baseURI,
         device: navigator.userAgent,
-        date: date.Format('YYYY-MM-DD HH:mm:SS')
+        date: date.Format('YYYY-MM-DD HH:mm:SS'),
+        element:element.outerHTML
     };
     if(typeof servlet_url === 'undefined' || servlet_url === null || servlet_url === '' || !servlet_url)
         servlet_url = 'postdata';
