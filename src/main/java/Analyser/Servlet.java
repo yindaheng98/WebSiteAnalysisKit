@@ -12,7 +12,7 @@ import java.io.IOException;
 @WebServlet(name = "Servlet", urlPatterns = {"postdata"}, loadOnStartup = 1)
 public class Servlet extends HttpServlet
 {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/MoniterData?useSSL=false&serverTimezone=UTC";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/MoniterData?serverTimezone=UTC";
     private static final String USER = "MoniterData";
     private static final String PASSWORD = "MoniterData";
     private Connection conn;
@@ -36,11 +36,13 @@ public class Servlet extends HttpServlet
             throws IOException
     {
         response.getWriter().print(request.getParameter("baseURI"));
+        System.out.println(request.getInputStream());
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException
     {
         response.getWriter().print(request.getParameter("baseURI"));
+        System.out.println(request.getInputStream());
     }
 }
