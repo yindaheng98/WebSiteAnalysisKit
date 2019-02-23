@@ -31,7 +31,7 @@ Element.prototype.removeEventListener=function (event, func, useCapture) {
 
 function handleClick(element) {//处理泛点击事件
     if(canClick(element))//如果点击发生在一个能被点击的元素上面
-        WSK_record({event:'点击',event_description:element.outerHTML});//就记录下被点击的元素
+        WSK_record({event_type:'点击',event_description:element.outerHTML});//就记录下被点击的元素
 }
 
 function canClick(element) {//判断这个元素能不能被点击
