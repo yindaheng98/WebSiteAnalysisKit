@@ -1,0 +1,32 @@
+<!DOCTYPE html> <html>
+<head>
+    <meta charset="UTF-8"> <title>Insert title here</title>
+</head>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $("#name").blur(function() {
+            var value = $("#name").val();
+
+            // 使用ajax发送请求
+            $.ajax({
+                url: "AjaxServlet", // 要访问的地址，这里访问的是servlet映射地址
+                cache: false,  // 是否缓存
+                data: "name="+value, // 相当于地址栏后面的参数
+                success: function(result){ // 访问成功后，执行的方法，参数是后台的结果
+                    // 将获取到的数据写入span标签
+                    $("#sp").text(result);
+                }
+            })
+
+        });
+
+    })
+</script>
+<body>
+<form action="AjaxServlet" method="post">
+    姓名：<input type="text" id="name" >
+    <span id="sp"></span>
+</form>
+</body>
+</html>
