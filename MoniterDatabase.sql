@@ -1,7 +1,7 @@
-drop database MoniterData;
+drop database if exists MoniterData;
 create database MoniterData;
 use MoniterData;
-create table 访问记录
+create table 事件记录
 (
 时间 datetime not null,
 IP地址 varchar(64) not null,
@@ -12,6 +12,7 @@ IP地址 varchar(64) not null,
 事件类型 varchar(255) not null,
 事件描述 varchar(255)
 );
+drop user if exists MoniterData@localhost;
 create user MoniterData@localhost identified by 'MoniterData';
-grant select,update,insert on MoniterData.* to MoniterData@localhost;
+grant create,select,update,insert on MoniterData.* to MoniterData@localhost;
 flush privileges;
