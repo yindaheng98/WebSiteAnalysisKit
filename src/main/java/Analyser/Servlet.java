@@ -39,24 +39,24 @@ public class Servlet extends HttpServlet
             throws IOException
     {
         request.setCharacterEncoding("UTF-8");
-    	response.setContentType("text/html;charset=utf-8");
-        response.setCharacterEncoding("UTF-8");//���ý��ַ���"UTF-8"����������ͻ��������
+        response.setContentType("text/html;charset=utf-8");
+        response.setCharacterEncoding("UTF-8");//设置将字符以"UTF-8"编码输出到客户端浏览器
         response.setHeader("content-type", "text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        ////////////////////////////////////////////////////////////////////////�����
+        ////////////////////////////////////////////////////////////////////////处理表单
         String name = request.getParameter("name");
         String uuu = request.getParameter("url");
         out.write("<ul>\n"
                 + name + "\n"
                 + uuu + "\n" +
                 "</ul>\n" );
-    	////////////////////////////////////////////////////////////////////////һЩ������Ϣ
-        Enumeration<String> reqHeadInfos = request.getHeaderNames(); //��ȡ���е�����ͷ
+        ////////////////////////////////////////////////////////////////////////一些请求信息
+        Enumeration<String> reqHeadInfos = request.getHeaderNames(); //获取所有的请求头
         Map<String, String> map = new HashMap<>();
         reqHeadInfos.nextElement();
         while (reqHeadInfos.hasMoreElements()) {
             String headName = reqHeadInfos.nextElement();
-            String headValue = request.getHeader(headName);//��������ͷ�����ֻ�ȡ��Ӧ������ͷ��ֵ
+            String headValue = request.getHeader(headName);//根据请求头的名字获取对应的请求头的值
             map.put(headName,headValue);
         }
         out.write(map.get("User-Agent"));
@@ -64,8 +64,8 @@ public class Servlet extends HttpServlet
         out.write(map.get("Host"));
         out.write("<br/>");
         System.out.println(map.get("User-Agent"));
-    	/////////////////////////////////////////////////////////һЩ����
-    	//String requestUrl = request.getRequestURL().toString();
+        /////////////////////////////////////////////////////////一些参数
+        //String requestUrl = request.getRequestURL().toString();
         String requestUri = request.getRequestURI();
         String queryString = request.getQueryString();
         String remoteAddr = request.getRemoteAddr();
@@ -88,9 +88,9 @@ public class Servlet extends HttpServlet
         //out.write("host_name:"+remoteHost+"<br/>");
         //out.write("post:"+remotePort+"<br/>");
         //out.write("method:"+method+"<br/>");
-        ////////////////////////////////////////////////////////////////ip���ַ
+        ////////////////////////////////////////////////////////////////ip查地址
         String url1 = "https://ip.tianqiapi.com/?ip=36.149.206.10";
-		String json = loadJSON(url1);
+        String json = loadJSON(url1);
         JSONObject obj = JSONObject.fromObject(json);
         String country = (String) obj.get("country");
         String province = (String)obj.get("province");
@@ -98,12 +98,12 @@ public class Servlet extends HttpServlet
         String isp = (String)obj.get("isp");
         out.write(country+" "+province+" "+city+" "+isp);
         out.write("<br/>");
-    	/////////////////////////////////////////////////////ǰ�˴��ݵĲ�����ȡ����
-    	String date = request.getParameter("date");
-    	String element = request.getParameter("element");
-    	out.write(date+"<br/>");
-    	out.write(element+"<br/>");
-    	//////////////////////////////////////////////////////////////////////////////////////////////////////���ݿ⴦������������
+        /////////////////////////////////////////////////////前端传递的参数获取处理
+        String date = request.getParameter("date");
+        String element = request.getParameter("element");
+        out.write(date+"<br/>");
+        out.write(element+"<br/>");
+        //////////////////////////////////////////////////////////////////////////////////////////////////////数据库处理，有中文乱码
         Connection conn;
         Statement stmt = null;
         try{
@@ -124,34 +124,33 @@ public class Servlet extends HttpServlet
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
     private static String loadJSON(String url) {
-		//�����ַ���
-		StringBuilder json = new StringBuilder();
-		try {
-			//ͨ��һ����ʾURL��ַ���ַ������Թ���һ��URL����
-			//url���캯����Ҫ�Ĳ�����
-			URL oracle = new URL(url);
-			//yc��URLConnection����oracle.openConnection()���ص���URLConnection���󣬸�ֵ��yc��
-			URLConnection yc = oracle.openConnection();
-			
-			//BufferedReader���巽ʽ�ı���ȡ  
-			//InputStreamReader���ֽ������ַ���֮����������ܽ��ֽ������Ϊ�ַ�����
-			//������Ϊ�ֽ���ָ���ַ����������һ�������ַ�
-			BufferedReader in = new BufferedReader(new InputStreamReader(
-					yc.getInputStream(), StandardCharsets.UTF_8));// ��ֹ����
-			String inputLine = null;
-			while ((inputLine = in.readLine()) != null) {
-				json.append(inputLine);
-			}
-			in.close();
-		} catch (IOException e) {
-		}
+        //处理字符串
+        StringBuilder json = new StringBuilder();
+        try {
+            //通过一个表示URL地址的字符串可以构造一个URL对象。
+            //url构造函数需要的参数。
+            URL oracle = new URL(url);
+            //yc是URLConnection对象，oracle.openConnection()返回的是URLConnection对象，赋值给yc。
+            URLConnection yc = oracle.openConnection();
+
+            //BufferedReader缓冲方式文本读取
+            //InputStreamReader是字节流与字符流之间的桥梁，能将字节流输出为字符流，
+            //并且能为字节流指定字符集，可输出一个个的字符
+            BufferedReader in = new BufferedReader(new InputStreamReader(
+                    yc.getInputStream(), StandardCharsets.UTF_8));// 防止乱码
+            String inputLine = null;
+            while ((inputLine = in.readLine()) != null) {
+                json.append(inputLine);
+            }
+            in.close();
+        } catch (IOException e) {
+        }
         return json.toString();
-	}
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException
     {
-
-    	request.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
 
     }
 }
