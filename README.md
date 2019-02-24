@@ -10,7 +10,10 @@ A series of JavaScript, servlets, and a database used for monitoring and analysi
 3. 在要进行统计的页面引入JavaScript文件，将Analyser.Servlet的url赋值给WSK_servlet_url
 
 4. (Optional)在要进行特殊事件统计的元素上添加点击函数(用addEventListener、onclick或者jQuery等均可)recordEvent(event_type,event_description)。其中event_type是事件的名称(类型)，event_description是事件上要附加的一些具体信息。
-event_description可以留空。
+event_description可以留空
+
+5. 等收集到一定量数据时候就可以在服务器端运行/python文件夹下的.py脚本，
+该脚本将对基础数据库进行数据分析并进一步构建数据库。
 
 Javascript文件引入后会自动监听并向后端发送两种类型的事件：“点击”和“访问页面”。
 
