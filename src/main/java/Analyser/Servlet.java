@@ -40,23 +40,23 @@ public class Servlet extends HttpServlet
     {
         request.setCharacterEncoding("UTF-8");
     	response.setContentType("text/html;charset=utf-8");
-        response.setCharacterEncoding("UTF-8");//ÉèÖÃ½«×Ö·ûÒÔ"UTF-8"±àÂëÊä³öµ½¿Í»§¶Ëä¯ÀÀÆ÷
+        response.setCharacterEncoding("UTF-8");//ï¿½ï¿½ï¿½Ã½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½"UTF-8"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         response.setHeader("content-type", "text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        ////////////////////////////////////////////////////////////////////////´¦Àí±íµ¥
+        ////////////////////////////////////////////////////////////////////////ï¿½ï¿½ï¿½ï¿½ï¿½
         String name = request.getParameter("name");
         String uuu = request.getParameter("url");
         out.write("<ul>\n"
                 + name + "\n"
                 + uuu + "\n" +
                 "</ul>\n" );
-    	////////////////////////////////////////////////////////////////////////Ò»Ð©ÇëÇóÐÅÏ¢
-        Enumeration<String> reqHeadInfos = request.getHeaderNames(); //»ñÈ¡ËùÓÐµÄÇëÇóÍ·
+    	////////////////////////////////////////////////////////////////////////Ò»Ð©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+        Enumeration<String> reqHeadInfos = request.getHeaderNames(); //ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½Í·
         Map<String, String> map = new HashMap<>();
         reqHeadInfos.nextElement();
         while (reqHeadInfos.hasMoreElements()) {
             String headName = reqHeadInfos.nextElement();
-            String headValue = request.getHeader(headName);//¸ù¾ÝÇëÇóÍ·µÄÃû×Ö»ñÈ¡¶ÔÓ¦µÄÇëÇóÍ·µÄÖµ
+            String headValue = request.getHeader(headName);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½È¡ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½Öµ
             map.put(headName,headValue);
         }
         out.write(map.get("User-Agent"));
@@ -64,7 +64,7 @@ public class Servlet extends HttpServlet
         out.write(map.get("Host"));
         out.write("<br/>");
         System.out.println(map.get("User-Agent"));
-    	/////////////////////////////////////////////////////////Ò»Ð©²ÎÊý
+    	/////////////////////////////////////////////////////////Ò»Ð©ï¿½ï¿½ï¿½ï¿½
     	//String requestUrl = request.getRequestURL().toString();
         String requestUri = request.getRequestURI();
         String queryString = request.getQueryString();
@@ -88,7 +88,7 @@ public class Servlet extends HttpServlet
         //out.write("host_name:"+remoteHost+"<br/>");
         //out.write("post:"+remotePort+"<br/>");
         //out.write("method:"+method+"<br/>");
-        ////////////////////////////////////////////////////////////////ip²éµØÖ·
+        ////////////////////////////////////////////////////////////////ipï¿½ï¿½ï¿½Ö·
         String url1 = "https://ip.tianqiapi.com/?ip=36.149.206.10";
 		String json = loadJSON(url1);
         JSONObject obj = JSONObject.fromObject(json);
@@ -98,12 +98,12 @@ public class Servlet extends HttpServlet
         String isp = (String)obj.get("isp");
         out.write(country+" "+province+" "+city+" "+isp);
         out.write("<br/>");
-    	/////////////////////////////////////////////////////Ç°¶Ë´«µÝµÄ²ÎÊý»ñÈ¡´¦Àí
+    	/////////////////////////////////////////////////////Ç°ï¿½Ë´ï¿½ï¿½ÝµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
     	String date = request.getParameter("date");
     	String element = request.getParameter("element");
     	out.write(date+"<br/>");
     	out.write(element+"<br/>");
-    	//////////////////////////////////////////////////////////////////////////////////////////////////////Êý¾Ý¿â´¦Àí£¬ÓÐÖÐÎÄÂÒÂë
+    	//////////////////////////////////////////////////////////////////////////////////////////////////////ï¿½ï¿½ï¿½Ý¿â´¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         Connection conn;
         Statement stmt = null;
         try{
@@ -124,20 +124,20 @@ public class Servlet extends HttpServlet
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
     private static String loadJSON(String url) {
-		//´¦Àí×Ö·û´®
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
 		StringBuilder json = new StringBuilder();
 		try {
-			//Í¨¹ýÒ»¸ö±íÊ¾URLµØÖ·µÄ×Ö·û´®¿ÉÒÔ¹¹ÔìÒ»¸öURL¶ÔÏó¡£
-			//url¹¹Ôìº¯ÊýÐèÒªµÄ²ÎÊý¡£
+			//Í¨ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ê¾URLï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¹ï¿½ï¿½ï¿½Ò»ï¿½ï¿½URLï¿½ï¿½ï¿½ï¿½
+			//urlï¿½ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½Òªï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½
 			URL oracle = new URL(url);
-			//ycÊÇURLConnection¶ÔÏó£¬oracle.openConnection()·µ»ØµÄÊÇURLConnection¶ÔÏó£¬¸³Öµ¸øyc¡£
+			//ycï¿½ï¿½URLConnectionï¿½ï¿½ï¿½ï¿½oracle.openConnection()ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½URLConnectionï¿½ï¿½ï¿½ó£¬¸ï¿½Öµï¿½ï¿½ycï¿½ï¿½
 			URLConnection yc = oracle.openConnection();
 			
-			//BufferedReader»º³å·½Ê½ÎÄ±¾¶ÁÈ¡  
-			//InputStreamReaderÊÇ×Ö½ÚÁ÷Óë×Ö·ûÁ÷Ö®¼äµÄÇÅÁº£¬ÄÜ½«×Ö½ÚÁ÷Êä³öÎª×Ö·ûÁ÷£¬
-			//²¢ÇÒÄÜÎª×Ö½ÚÁ÷Ö¸¶¨×Ö·û¼¯£¬¿ÉÊä³öÒ»¸ö¸öµÄ×Ö·û
+			//BufferedReaderï¿½ï¿½ï¿½å·½Ê½ï¿½Ä±ï¿½ï¿½ï¿½È¡  
+			//InputStreamReaderï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Ö½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½
 			BufferedReader in = new BufferedReader(new InputStreamReader(
-					yc.getInputStream(), StandardCharsets.UTF_8));// ·ÀÖ¹ÂÒÂë
+					yc.getInputStream(), StandardCharsets.UTF_8));// ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½
 			String inputLine = null;
 			while ((inputLine = in.readLine()) != null) {
 				json.append(inputLine);
@@ -150,6 +150,7 @@ public class Servlet extends HttpServlet
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException
     {
+
     	request.setCharacterEncoding("UTF-8");
 
     }

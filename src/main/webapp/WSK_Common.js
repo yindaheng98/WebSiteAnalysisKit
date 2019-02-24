@@ -60,7 +60,7 @@ function WSK_record(data) {//输入data是一个JSON包含要记录的数据
             console.log(data_str)
         }
     };
-    xmlhttp.open("POST", "/WebSiteAnalysisKit/" + WSK_servlet_url, true);
+    xmlhttp.open("GET", "/WebSiteAnalysisKit/" + WSK_servlet_url, true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xmlhttp.send(data_str.substr(1));
 }
