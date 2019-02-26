@@ -3,7 +3,8 @@
 #则要设置使event_type_name['点击']='普通点击'
 event_type_name={
     '点击':'点击',
-    '访问页面':'访问页面'
+    '访问页面':'访问页面',
+    '注册完成':'注册完成'
     }
 
 #下面这个是数据库连接设置
@@ -14,3 +15,6 @@ dbc=mysql.connector.connect(
     passwd="MoniterData",
     database="MoniterData"
     )
+
+#月用户活跃度(每月有多少天访问网站)达到多少算活跃用户?
+active_threshold=10
