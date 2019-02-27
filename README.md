@@ -1,5 +1,5 @@
 # WebSiteAnalysisKit
-A series of JavaScript, servlets, and a database used for monitoring and analysing web accessing.
+A series of JavaScript, servlets, and a database with some python script for data analysis, used for monitoring and analysing web accessing.
 
 ## 页面访问情况统计功能使用方法
 
