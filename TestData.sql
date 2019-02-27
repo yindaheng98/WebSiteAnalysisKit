@@ -19,14 +19,6 @@ values
 ('2019-01-25 14:45','192.168.31.85','aaa',null,'yindaheng98.top','yin','注册完成',null),
 ('2019-01-25 14:45','192.168.31.85','aaa',null,'yindaheng98.top','yind','注册完成',null),
 ('2019-01-23 15:35','192.168.31.85','aaa',null,'yindaheng98.top','yind','注册完成',null),
-('2019-01-25 14:45','192.168.31.85','aaa',null,'yindaheng98.top','yind','注册完成',null);
-
-insert into moniterdata.日访问量(时间,访问量)
-values
-('2019-02-22',100),
-('2019-02-21',200);
-
-insert into moniterdata.小时访问量(时间,访问量)
-values
-('2019-02-22 17:00',100),
-('2019-02-21 17:00',200);
+('2018-01-25 14:45','192.168.31.85','aaa',null,'yindaheng98.top','yind','注册完成',null),
+('2017-01-23 15:35','192.168.31.85','aaa',null,'yindaheng98.top','yind','注册完成',null),
+('2018-01-25 14:45','192.168.31.85','aaa',null,'yindaheng98.top','yind','注册完成',null);

@@ -1,41 +1,36 @@
 """用户数量统计"""
 from config import dbc,event_type_name#导入配置文件
-cursor=dbc.cursor()
+from common import query_fetch,execute_commit,get_last_count,insert_datas
 
-def process(table_name,SQL_count):
+def local_create_table(table_name):
     #如果表不存在就要先创建
     SQL='CREATE TABLE if not exists %s'%table_name
     SQL+='(时间 date not null primary key,数量 bigint not null)'
-    print(SQL)
-    cursor.execute(SQL)
-    dbc.commit()
-    
+    execute_commit(SQL)
+
+def local_get_last_count(table_name):
     #找出最近一次计算日新增用户量的时间last_count
     SQL="SELECT max(时间) FROM %s"%table_name
-    print(SQL)
-    cursor.execute(SQL)
-    last_count=cursor.fetchall()[0][0]
-    if last_count==None:
-        last_count='1970-01-01'
-
+    return get_last_count(SQL)
+    
+def local_insert_datas(table_name,SQL_count):
+    last_count=local_get_last_count(table_name)
     #从原始数据表中选出数据统计并插入
-    SQL=SQL_count%{'上一条记录的时间':str(last_count)}
-    print(SQL)
-    cursor.execute(SQL)
-    results=cursor.fetchall()
-    SQL_f="INSERT INTO %s(时间, 数量)VALUES('%s','%d')"
-    for result in results:
-        print(result)
-        SQL=SQL_f%(table_name,str(result[0]),result[1])
-        print(SQL)
-        cursor.execute(SQL)
-        dbc.commit()
+    SQL=SQL_count%str(last_count)
+    results=query_fetch(SQL)
+    SQL_f="INSERT INTO %s(时间, 数量)VALUES('%%s','%%d')"%table_name
+    insert_datas(SQL_f,results)
+
+def process(table_name,SQL_count):
+    local_create_table(table_name)
+    local_insert_datas(table_name,SQL_count)
+    
 
 """统计日新增用户量"""
 SQL_count="SELECT 日期,count(*) FROM(\
 SELECT date(时间) AS 日期 FROM 事件记录 WHERE \
 事件类型='%s' AND \
-Date(时间) BETWEEN date('%%(上一条记录的时间)s')+1 AND date(now())-1\
+Date(时间) BETWEEN date('%%s')+1 AND date(now())-1\
 ) AS T GROUP BY 日期"%event_type_name['注册完成']
 process('日新增用户数量',SQL_count)
 
@@ -43,8 +38,8 @@ process('日新增用户数量',SQL_count)
 SQL_count="SELECT 日期,sum(数量) FROM(\
 SELECT date(concat(year(时间),'-',month(时间),'-01')) AS 日期,数量 \
 FROM 日新增用户数量 WHERE 时间 BETWEEN \
-date(concat(year('%(上一条记录的时间)s'),'-',month('%(上一条记录的时间)s')+1,'-01')) \
-AND date(concat(year(now()),'-',month(now()),'-01'))-1\
+date_add(date('%s'),interval 1 month) AND \
+date(concat(year(now()),'-',month(now()),'-01'))-1\
 ) AS T GROUP BY 日期"
 process('月新增用户数量',SQL_count)
 
@@ -52,9 +47,31 @@ process('月新增用户数量',SQL_count)
 SQL_count="SELECT 日期,sum(数量) FROM(\
 SELECT date(concat(year(时间),'-01-01')) AS 日期,数量 \
 FROM 月新增用户数量 WHERE 时间 BETWEEN \
-date(concat(year('%(上一条记录的时间)s')+1,'-01-01')) AND \
+date_add(date('%s'),interval 1 year) AND \
 date(concat(year(now()),'-01-01'))-1\
 ) AS T GROUP BY 日期"
 process('年新增用户数量',SQL_count)
+
+"""每天都统计用户总量"""
+local_create_table('用户总量')
+last_count=local_get_last_count('用户总量')
+if type(last_count) is str:#如果此前不曾统计过总用户量
+    SQL="SELECT min(时间),数量 FROM 日新增用户数量"
+    first_count=query_fetch(SQL)[0]
+    #就在开头先插一个数据
+    SQL="INSERT INTO 用户总量(时间,数量)VALUES('%s','%d')"%first_count
+    execute_commit(SQL)
+
+SQL="SELECT max(时间),数量 FROM 用户总量"
+last_count,user_total=query_fetch(SQL)[0]
+SQL="SELECT 时间,数量 FROM 日新增用户数量 \
+WHERE 时间<date(now()) AND 时间>'%s' order by 时间 asc"%last_count
+useradd_everyday=query_fetch(SQL)
+usertotal_everyday=[]
+for date,useradd in useradd_everyday:
+    user_total+=useradd
+    usertotal_everyday.append((date,user_total))
+SQL_f="INSERT INTO 用户总量(时间,数量)VALUES('%s','%d')"
+insert_datas(SQL_f,usertotal_everyday)
 
 dbc.close()
