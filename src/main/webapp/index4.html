@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+	<script src="js/echarts.min.js"></script>
+</head>
+
+<body>
+	<div id="duibi" style="width: 300px; height:200px;"></div>
+</body>
+	<script>
+	var myChart = echarts.init(document.getElementById('duibi'));
+ 
+				// 指定图表的配置项和数据
+				option = {
+    backgroundColor: "#ffffff",
+    color: ["#37A2DA", "#FF9F7F"],
+    legend: {
+        data: ['活跃', '沉默'],
+        x:"43%",
+    },
+    grid: {
+        containLabel: true
+    },
+    xAxis: [{
+        type: 'value'
+    }],
+    yAxis: [{
+        type: 'category',
+        axisTick: {
+            show: false
+        },
+        data: ['2017', '2018', '2019']
+    }],
+    series: [{
+        name: '沉默',
+        type: 'bar',
+        stack: '总量',
+        label: {
+            normal: {
+                show: true,
+                position: 'right'
+            }
+        },
+        data: [202, 241, 274]
+    }, {
+        name: '活跃',
+        type: 'bar',
+        stack: '总量',
+        label: {
+            normal: {
+                show: true,
+                position: 'left'
+            }
+        },
+        data: [-132, -101, -134]
+    }]
+};
+ 
+				// 使用刚指定的配置项和数据显示图表。
+				myChart.setOption(option);
+		</script>
+</html>

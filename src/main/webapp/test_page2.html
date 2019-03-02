@@ -5,28 +5,45 @@
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
     $(function(){
-        $("#name").blur(function() {
-            var value = $("#name").val();
-
-            // 使用ajax发送请求
+        $("#name").click(function() {
             $.ajax({
-                url: "AjaxServlet", // 要访问的地址，这里访问的是servlet映射地址
-                cache: false,  // 是否缓存
-                data: "name="+value, // 相当于地址栏后面的参数
-                success: function(result){ // 访问成功后，执行的方法，参数是后台的结果
-                    // 将获取到的数据写入span标签
-                    $("#sp").text(result);
+                url: "AjaxServlet",
+                type: "post",
+                dataType: "json",//以json形式接收
+                error: function() {
+                    alert("error");
+                },
+                success: function(data) {
+                    var html = "";
+                    $.each(data, function(index, content) {
+                        var kch = content.s;
+                        $("#sp").text(kch);
+                        alert(kch);
+                    });
                 }
-            })
+            });
 
         });
 
     })
 </script>
 <body>
-<form action="AjaxServlet" method="post">
-    姓名：<input type="text" id="name" >
+    <li>姓名：<a type="text" id="name" href="#">aaa</a></li>
     <span id="sp"></span>
-</form>
+    <script>
+        $(function(){
+            $('.cns').click(function(){
+                alert($(this).attr('href'));
+                //return false; // 加上這個可以防止跳轉
+            })
+
+        })
+    </script>
+
+
+    <a class="cns" href="postdata">首页</a>
+    <a class="cns" href="baidu.com/{v.id}">张三</a>
+    <a class="cns" href="baidu.com/{v.id}">王五</a>
+    <a class="cns" href="baidu.com/{v.id}">李四</a>
 </body>
 </html>
