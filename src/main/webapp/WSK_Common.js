@@ -36,7 +36,8 @@ Date.prototype.Format = function (formatStr) {
 /*以下是记录事件用的组件*/
 function WSK_record(data) {//输入data是一个JSON包含要记录的数据
     var data_str = '';
-    data_str += '&' + 'baseURI=' + encodeURIComponent(document.baseURI);
+
+    data_str += '?' + 'baseURI=' + encodeURIComponent(document.baseURI);
     data_str += '&' + 'device=' + encodeURIComponent(navigator.userAgent);
     data_str += '&' + 'date=' + encodeURIComponent(new Date().Format('YYYY-MM-DD HH:mm:SS'));
     if (typeof data !== 'undefined' && data &&
@@ -45,7 +46,6 @@ function WSK_record(data) {//输入data是一个JSON包含要记录的数据
             data_str += '&' + key + '=' + encodeURIComponent(data[key]);
         }
     }
-
     if (typeof WSK_servlet_url === 'undefined' ||
         WSK_servlet_url === null ||
         WSK_servlet_url === '' ||
@@ -60,7 +60,7 @@ function WSK_record(data) {//输入data是一个JSON包含要记录的数据
             console.log(data_str)
         }
     };
-    xmlhttp.open("GET", "/WebSiteAnalysisKit/" + WSK_servlet_url, true);
-    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send(data_str.substr(1));
+    xmlhttp.open("GET", "/WebSiteAnalysisKit/" + WSK_servlet_url+data_str, true);
+    alert(WSK_servlet_url+data_str);
+    xmlhttp.send(null);
 }
