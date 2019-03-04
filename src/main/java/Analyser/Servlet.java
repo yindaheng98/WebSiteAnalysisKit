@@ -56,7 +56,7 @@ public class Servlet extends HttpServlet
             Class.forName("com.mysql.cj.jdbc.Driver");
             String password = "jhp126987";
             String user = "root";
-            String url = "jdbc:mysql://localhost:3306/moniterdata?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";
+            String url = "jdbc:mysql://localhost:3306/moniterdata?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8";
             conn = DriverManager.getConnection(url, user, password);
 
             stmt = conn.createStatement();
