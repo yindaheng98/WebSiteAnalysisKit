@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="web-3.css">
+    <style>
+        .current a {
+            color: #000;
+            background: #47bde1;
+        }
+    </style>
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <title>WAK-Home</title>
+</head>
+
+<body>
+
+
+<ul class="userMenu">
+    <li class="current" data-id="center"><a href="#">用户分析</a></li>
+    <li data-id="traffic"><a href="#">流量分析</a></li>
+    <li data-id="account"><a href="#">终端分析</a></li>
+    <li><a href="#">事件分析</a></li>
+    <li><a href="#">报表统计</a></li>
+</ul>
+<div id="content">
+</div>
+
+</body>
+<script>
+    $(function () {
+        $(".userMenu").on("click", "li", function () {
+            //获取data-id的值
+            window.location.hash = $(this).data("id"); //设置锚点
+            loadInner();
+        });
+
+        function loadInner() {
+            var sId = window.location.hash;
+            var pathn, i;
+            switch (sId) {
+                case "#center":
+                    pathn = "user_center.html";
+                    i = 0;
+                    break;
+                case "#traffic":
+                    pathn = "user_traffic.html";
+                    i = 1;
+                    break;
+                case "#account":
+                    pathn = "user_account.html";
+                    i = 2;
+                    break;
+                default:
+                    pathn = "user_center.html";
+                    i = 0;
+                    break;
+            }
+            $("#content").load(pathn); //加载相对应的内容
+            $(".userMenu li").eq(i).addClass("current").siblings().removeClass("current"); //当前列表高亮
+        }
+
+        var sId = window.location.hash;
+        loadInner(sId);
+    });
+</script>
+
+</html>
