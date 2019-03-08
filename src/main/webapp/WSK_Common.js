@@ -61,6 +61,5 @@ function WSK_record(data) {//输入data是一个JSON包含要记录的数据
         }
     };
     xmlhttp.open("GET", "/WebSiteAnalysisKit/" + WSK_servlet_url+data_str, true);
-    alert(WSK_servlet_url+data_str);
     xmlhttp.send(null);
 }
