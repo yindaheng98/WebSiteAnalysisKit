@@ -1,6 +1,12 @@
 package Analyser;
+import net.sf.json.JSONObject;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,19 +17,13 @@ public class AjaxServlet extends HttpServlet {
         private static final long serialVersionUID = 1L;
         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.setCharacterEncoding("utf-8");
-        String name = request.getParameter("name");
-        // 模拟读取数据库
-            System.out.println(".........");
-        if(name.equals("test")) {
-            response.getWriter().print("ok"); // 将结果返回到前端
-        }else {
-            response.getWriter().print("bad"); // 将结果返回到前端
-        } }
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("application/json; charset=utf-8");
+            PrintWriter writer = response.getWriter();
+            writer.print("[{\"s\":\"1\"}]");
+            System.out.println("aas");
+        }
         protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
 }
-
-
-
