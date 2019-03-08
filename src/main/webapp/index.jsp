@@ -36,7 +36,7 @@
 <body>
 <%
     String driver = "com.mysql.cj.jdbc.Driver";
-    String url = "jdbc:mysql://localhost:3306/moniterdata?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false";//URL指向访问的数据库名，jsp_data
+    String url = "jdbc:mysql://localhost:3306/moniterdata?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8";//URL指向访问的数据库名，jsp_data
     String user = "root";//Mysql配置时的用户名
     String password = "jhp126987";//密码
     int i=1;
