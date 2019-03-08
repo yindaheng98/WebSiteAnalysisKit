@@ -1,6 +1,7 @@
 .gradle
 /build/
 /python/__pycache__/
+.idea
 
 # Ignore Gradle GUI config
 gradle-app.setting
