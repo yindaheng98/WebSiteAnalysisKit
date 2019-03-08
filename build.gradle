@@ -21,3 +21,7 @@ dependencies {
     compile('net.sf.json-lib:json-lib:2.4:jdk15')
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
 }
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
