@@ -33,7 +33,7 @@
 <SCRIPT LANGUAGE="JavaScript">
     <%
     label="总访问量";
-    SQL = "SELECT sum(访问量) FROM 日访问量";
+    SQL = "SELECT count(*) FROM moniterdata.事件记录 where 事件类型='访问页面'";
     rs1= conn.query(SQL);
     try {
         rs1.next();
