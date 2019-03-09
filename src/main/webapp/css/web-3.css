@@ -1,6 +1,6 @@
 ﻿
 	body{
-		background:#f8f9fa url('resource/1.jpg')no-repeat left top;
+		background:#f8f9fa url('../resource/1.jpg')no-repeat left top;
 		}
 	ul{
 		list-style-type:none;

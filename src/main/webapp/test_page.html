@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="WSK_Common.js"></script>
-    <script src="WSK_ClickMoniter.js"></script>
-    <script src="WSK_EventMoniter.js"></script>
+    <script src="WAK/WSK_Common.js"></script>
+    <script src="WAK/WSK_ClickMoniter.js"></script>
+    <script src="WAK/WSK_EventMoniter.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 
 <body>
-
-    <a href="postdata?baseURI=1">点我</a>
     <div onclick="alert('执行了通过onclick加的点击函数')">点我</div>
     <div id="h">点我</div>
     <div id="hhh">点我</div>
@@ -26,7 +24,7 @@
     <input type="submit" value="提交" />
 </form>
 </body>
-<script src="jquery-3.3.1.min.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
 <script>
     window.onload=function () {
         document.getElementById("hhh").addEventListener("click",function () {

@@ -5,7 +5,7 @@ create table 事件记录
 (
 时间 datetime not null,
 IP地址 varchar(64) not null,
-设备型号 varchar(64) not null,
+设备型号 text not null,
 `SESSION编号` varchar(64),
 所在页面 varchar(255) not null,
 用户 varchar(255),

@@ -26,7 +26,7 @@
         <div class="heading2">
             网站总流量：
         </div>
-        <div style="width: 100px;height: 100px;font-size: 50px;font-family: Microsoft YaHei UI;color: #47bde1;margin-left: 30px;margin-top: 25px">
+        <div style="width: 100px;height: 100px;font-size: 50px;font-family: Microsoft YaHei UI;color: #47bde1;margin-left: 30px;margin-top: 25px" id="total">
             2333333
         </div>
     </div>
@@ -38,6 +38,9 @@
     </div>
 </div>
 </body>
+<script>
+    document.getElementById("total").innerHTML=data['总访问量'];
+</script>
 <script>
     // 获取到这个DOM节点，然后初始化
 
@@ -69,13 +72,7 @@
             },
             type: 'category',
             boundaryGap: false,
-            data: function () {
-                var list = [];
-                for (var i = 10; i < 21; i++) {
-                    list.push('2019-03-08 ' + i + ':00');
-                }
-                return list;
-            }()
+            data: data['小时访问量']['时间']
         }],
         yAxis: [{
 
@@ -92,7 +89,7 @@
             symbol: 'none',
             smooth: 0.3,
             color: ['#66AEDE'],
-            data: [800, 300, 500, 800, 300, 600, 500, 600, 700, 800, 700]
+            data: data['小时访问量']['访问量']
         }]
     };
 
@@ -110,7 +107,7 @@
         legend: {
             data: ['浏览量'],
             x: "50%",
-            padding: 10,    // [5, 10, 15, 20]
+            padding: 10    // [5, 10, 15, 20]
         },
         grid: {
             containLabel: true
@@ -121,7 +118,7 @@
                 lineStyle: {
                     color: '#999999'
                 }
-            },
+            }
         }],
         yAxis: [{
             type: 'category',

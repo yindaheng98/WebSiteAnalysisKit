@@ -7,7 +7,7 @@ import json
 SQL='CREATE TABLE IF NOT EXISTS `终端分析`( `编号` INT(50) NOT NULL PRIMARY KEY AUTO_INCREMENT, `省` VARCHAR(50) NOT NULL, `市` VARCHAR(50) NOT NULL, `操作系统` VARCHAR(50) NOT NULL, `浏览器` VARCHAR(50)NOT NULL, `浏览机型` VARCHAR(50) , `运营商` VARCHAR(50) NOT NULL )'
 cursor.execute(SQL)
 dbc.commit()
-SQL='SELECT `IP地址`, `设备型号` FROM `访问记录` WHERE 1 '
+SQL='SELECT `IP地址`, `设备型号` FROM `事件记录` WHERE 1 '
 cursor.execute(SQL)
 message=cursor.fetchall()
 for m in message:
@@ -42,7 +42,6 @@ for m in message:
     (`编号`, `省`, `市`, `操作系统`, `浏览器`, `浏览机型`, `运营商`) \
     VALUES (NULL, "'+province+'", "'+city+'", "'+caozuo_xitong+'", "'+liulan_qi+'","'+ji_xing+'", "'+isp+'")'
     print(SQL)
-dbc.commit()
-
-cursor.execute(SQL)
-dbc.commit()
+    cursor.execute(SQL)
+    dbc.commit()
+dbc.close()

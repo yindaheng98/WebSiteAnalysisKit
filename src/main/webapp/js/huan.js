@@ -1,6 +1,5 @@
 ﻿var chart1 = echarts.init(document.getElementById("chart1"));	
 
-	var data =[{"name":"Android","value":1},{"name":"Win10","value":2}];
 	// 指定图表的配置项和数据
 	var option = {
 
@@ -60,7 +59,7 @@
 	                }
 	            }
 	        },
-	        data: data                      // 系列中的数据内容数组。
+	        data: [{"name":"Android","value":1},{"name":"Win10","value":2}]                      // 系列中的数据内容数组。
 	    }]
 	};
 	// 使用刚指定的配置项和数据显示图表
@@ -68,19 +67,6 @@
 
 var chart2 = echarts.init(document.getElementById("chart2"));	
 	// 圆环图各环节的名称和值(系列中各数据项的名称和值)
-	var data =[{  
-	                name: '小米',
-	                value: 320
-	            },{
-	                name: '苹果',
-	                value: 586
-	            },{
-	                name: '诺基亚',
-	                value: 874
-	            },{
-	                name: '华为',
-	                value: 725
-	            }];	  
 	// 指定图表的配置项和数据
 	var option = {
 
@@ -140,7 +126,19 @@ var chart2 = echarts.init(document.getElementById("chart2"));
 	                }
 	            }
 	        },
-	        data: data                      // 系列中的数据内容数组。
+	        data: [{
+				name: '小米',
+				value: 320
+			},{
+				name: '苹果',
+				value: 586
+			},{
+				name: '诺基亚',
+				value: 874
+			},{
+				name: '华为',
+				value: 725
+			}]                      // 系列中的数据内容数组。
 	    }]
 	};
 	// 使用刚指定的配置项和数据显示图表
@@ -150,19 +148,6 @@ var chart2 = echarts.init(document.getElementById("chart2"));
 
 var chart3 = echarts.init(document.getElementById("chart3"));	
 	// 圆环图各环节的名称和值(系列中各数据项的名称和值)
-	var data =[{  
-	                name: '小米',
-	                value: 320
-	            },{
-	                name: '苹果',
-	                value: 586
-	            },{
-	                name: '诺基亚',
-	                value: 874
-	            },{
-	                name: '华为',
-	                value: 725
-	            }];	  
 	// 指定图表的配置项和数据
 	var option = {
 
@@ -222,7 +207,19 @@ var chart3 = echarts.init(document.getElementById("chart3"));
 	                }
 	            }
 	        },
-	        data: data                      // 系列中的数据内容数组。
+	        data: [{
+				name: '小米',
+				value: 320
+			},{
+				name: '苹果',
+				value: 586
+			},{
+				name: '诺基亚',
+				value: 874
+			},{
+				name: '华为',
+				value: 725
+			}]                      // 系列中的数据内容数组。
 	    }]
 	};
 	// 使用刚指定的配置项和数据显示图表
@@ -232,19 +229,6 @@ var chart3 = echarts.init(document.getElementById("chart3"));
 
 var chart4 = echarts.init(document.getElementById("chart4"));	
 	// 圆环图各环节的名称和值(系列中各数据项的名称和值)
-	var data =[{  
-	                name: '小米',
-	                value: 320
-	            },{
-	                name: '苹果',
-	                value: 586
-	            },{
-	                name: '诺基亚',
-	                value: 874
-	            },{
-	                name: '华为',
-	                value: 725
-	            }];	  
 	// 指定图表的配置项和数据
 	var option = {
 
@@ -304,7 +288,19 @@ var chart4 = echarts.init(document.getElementById("chart4"));
 	                }
 	            }
 	        },
-	        data: data                      // 系列中的数据内容数组。
+	        data: [{
+				name: '小米',
+				value: 320
+			},{
+				name: '苹果',
+				value: 586
+			},{
+				name: '诺基亚',
+				value: 874
+			},{
+				name: '华为',
+				value: 725
+			}]                      // 系列中的数据内容数组。
 	    }]
 	};
 	// 使用刚指定的配置项和数据显示图表
