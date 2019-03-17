@@ -4,15 +4,19 @@
 <%@ page import="Constructors.AccessPerHoursDataConstructor" %>
 <%@ page import="Constructors.AccessPerDaysDataConstructor" %>
 <%@ page import="common.DataConstructor" %>
+<%@ page import="Constructors.NewuserPerDaysDataConstructor" %>
+<%@ page import="Constructors.NewuserPerMonthsDataConstructor" %>
 <%
     DataConnector conn = new DataConnector();
     String label, SQL;
     String[][] rs;
     int total = 0;
 
-    DataConstructor[] dcs = new DataConstructor[2];
-    dcs[0] = new AccessPerHoursDataConstructor(1000);
-    dcs[1] = new AccessPerDaysDataConstructor(1000);
+    DataConstructor[] dcs=new DataConstructor[4];
+    dcs[0]=new AccessPerHoursDataConstructor(1000);
+    dcs[1]=new AccessPerDaysDataConstructor(1000);
+    dcs[2]=new NewuserPerDaysDataConstructor(1000);
+    dcs[3]=new NewuserPerMonthsDataConstructor(1000);
     DataReacher dr = new DataReacher(dcs);
     String totalData = dr.reachData().toString();
 %>
