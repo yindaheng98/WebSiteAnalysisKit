@@ -111,6 +111,13 @@ public class Tools {
         return jm;
     }
 
+    /**
+     * 一个求和返回结果的函数
+     *
+     * @param conn 数据连接
+     * @param SQL  求和语句
+     * @return 整数结果
+     */
     public static int getSum(DataConnector conn, String SQL) {
         ResultSet rs1 = conn.query(SQL);
         int total = 0;
