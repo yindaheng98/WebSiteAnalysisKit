@@ -3,7 +3,8 @@ package Constructors;
 import common.DataConnector;
 import common.DataConstructor;
 import common.Tools;
-import net.sf.json.JSONArray;
+import net.sf.json.JSON;
+
 import java.text.SimpleDateFormat;
 
 
@@ -13,7 +14,7 @@ import java.text.SimpleDateFormat;
 public class NewuserPerMonthsDataConstructor implements DataConstructor {
     private static NewuserPerMonthsDataConstructor instance;
     private int dataNum = 1000;
-    private String name="月新增用户数量";
+    private String name = "月新增用户数量";
 
     /**
      * 构造函数
@@ -30,10 +31,10 @@ public class NewuserPerMonthsDataConstructor implements DataConstructor {
     }
 
     @Override
-    public JSONArray getData(DataConnector conn) {
-        String[][] timeTable = Tools.getTimeTable(conn, name, dataNum);
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        return Tools.matrixJSONArray(Tools.smoothTimeTable(timeTable,dataNum,60*60*1000,df));
+    public JSON getData(DataConnector conn) {
+        String[][] timeTable = Tools.getTimeTable(conn, name, "时间", "数量", dataNum);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM");
+        return Tools.matrixJSONArray(Tools.smoothTimeTable(timeTable, dataNum, 30 * 60 * 60 * 1000, df));
     }
 
     @Override

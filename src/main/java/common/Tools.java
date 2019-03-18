@@ -7,23 +7,24 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 相关的各种工具函数
  */
 public class Tools {
 
+
     /**
-     * 获取时间表一类的数据
+     * 查询时间表一类的数据
      *
-     * @param conn       输入数据连接
-     * @param table_name 输入表名
-     * @param limit      选出多少条数据
+     * @param conn 输入数据连接
+     * @param SQL  输入语句
      * @return 返回一个字符串列表形式的数据集合
      */
-    public static String[][] getTimeTable(DataConnector conn, String table_name, int limit) {
+    private static String[][] queryTimeTable(DataConnector conn, String SQL) {
         String[][] result = new String[2][];
-        String SQL = "SELECT * FROM " + table_name + " ORDER BY 时间 DESC LIMIT " + limit;
         ResultSet rs = conn.query(SQL);
         StringBuilder time_str = new StringBuilder();
         StringBuilder numb_str = new StringBuilder();
@@ -44,6 +45,26 @@ public class Tools {
         result[0] = time_str.toString().split(",");
         result[1] = numb_str.toString().split(",");
         return result;
+    }
+
+    /**
+     * 获取时间表一类的数据
+     *
+     * @param conn       输入数据连接
+     * @param table_name 输入表名
+     * @param time_col   输入存时间的列名
+     * @param data_col   输入存数据的列名
+     * @param limit      选出多少条数据
+     * @return 返回一个字符串列表形式的数据集合
+     */
+    public static String[][] getTimeTable(DataConnector conn,
+                                          String table_name,
+                                          String time_col,
+                                          String data_col,
+                                          int limit) {
+        String SQL = "SELECT " + time_col + "," + data_col + " FROM " + table_name;
+        SQL += " ORDER BY 时间 DESC LIMIT " + limit;
+        return queryTimeTable(conn, SQL);
     }
 
     /**
@@ -91,6 +112,41 @@ public class Tools {
         for (int i = 0; i < dataNum; i++) {
             result[0][i] = df.format(datetimes[i]);
             result[1][i] = datas[i];
+        }
+        return result;
+    }
+
+    /**
+     * 获取和item相关的时间表一类的数据
+     *
+     * @param conn       输入数据连接
+     * @param table_name 输入表名
+     * @param time_col   输入存时间的列名
+     * @param data_col   输入存数据的列名
+     * @param item_col   输入存着item名的那一列叫什么
+     * @param limit      选出多少条数据
+     * @return 返回一个(item名称 - > 数据)的键值对，数据的形式同getTimeTable
+     */
+    public static Map<String, String[][]> getItemTimeTable(DataConnector conn,
+                                                           String table_name,
+                                                           String time_col,
+                                                           String data_col,
+                                                           String item_col,
+                                                           int limit) {
+        Map<String, String[][]> result = new HashMap<>();
+        String SQL = "SELECT DISTINCT " + item_col + " FROM " + table_name;
+        ResultSet items = conn.query(SQL);
+        while (true) {
+            try {
+                if (!items.next()) break;
+                String item = items.getString(1);
+                SQL = "SELECT " + time_col + "," + data_col + " FROM " + table_name;
+                SQL += " WHERE " + item_col + "='" + item + "' ORDER BY 时间 DESC LIMIT " + limit;
+                String[][] data = queryTimeTable(conn, SQL);
+                result.put(item, data);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return result;
     }

@@ -17,7 +17,7 @@
              onclick="tableToExcel()"></div>
     <div class="section1">
         <div class="heading2">
-            小时流量图
+            每小时流量
         </div>
         <div id="box" style="width: 570px; height:380px; background-color: pink;margin: 38px;"></div>
     </div>
@@ -61,10 +61,7 @@
 
 
         xAxis: [{
-            axisLabel: {
-                rotate: 30,
-                interval: 0
-            },
+            axisLabel: false,
             axisLine: {
                 lineStyle: {
                     color: '#999999'
@@ -84,7 +81,6 @@
             }
         }],
         series: [{
-            name: '流量',
             type: 'line',
             symbol: 'none',
             smooth: 0.3,

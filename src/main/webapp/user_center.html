@@ -33,7 +33,7 @@
              onclick="tableToExcel()"></div>
     <div class="section1">
         <div class="heading2">
-            新增用户随时间变化图
+            每日新增用户数量
         </div>
         <div id="box" style="width: 570px; height:380px; background-color: pink;margin: 38px;"></div>
     </div>
@@ -78,10 +78,7 @@
 
 
         xAxis: [{
-            axisLabel: {
-                rotate: 30,
-                interval: 0
-            },
+            axisLabel: false,
             axisLine: {
                 lineStyle: {
                     color: '#999999'
@@ -101,7 +98,6 @@
             }
         }],
         series: [{
-            name: '人数',
             type: 'line',
             symbol: 'none',
             smooth: 0.3,

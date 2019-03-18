@@ -44,9 +44,9 @@ for i in range(1,50):
 users=[]
 for i in range(1,50):
     md5.update(str(random()).encode('utf-8'))
-    users.append('user_%s'%md5.hexdigest()[0:10])
+    users.append("'user_%s'"%md5.hexdigest()[0:10])
 
 products=[]
 for i in range(1,50):
     md5.update(str(random()).encode('utf-8'))
-    products.append('product_%s'%md5.hexdigest()[0:10])
+    products.append("'product_%s'"%md5.hexdigest()[0:10])

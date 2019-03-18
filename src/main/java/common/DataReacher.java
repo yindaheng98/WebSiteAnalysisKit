@@ -18,6 +18,7 @@ public class DataReacher {
      * @param dcs 输入一系列数据构造器，存着
      */
     public DataReacher(DataConstructor[] dcs) {
+        if (dcs == null) dcs = new DataConstructor[0];
         constructors = new DataConstructor[dcs.length];
         for (int i = 0; i < dcs.length; i++)
             constructors[i] = dcs[i].getInstance();
@@ -44,7 +45,9 @@ public class DataReacher {
             constructors[constructors.length - 1 - i] = dcs[i].getInstance();
     }
 
-    /**调用存着的构造器构造数据
+    /**
+     * 调用存着的构造器构造数据
+     *
      * @return 构造出的json结构为{getName()的返回值:getData()的返回值,...}
      */
     public JSONObject reachData() {

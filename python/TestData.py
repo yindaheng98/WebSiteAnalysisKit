@@ -15,9 +15,9 @@ SQL_f+="'%(IP地址)s',"
 SQL_f+="'%(设备型号)s',"
 SQL_f+="'%(SESSION编号)s',"
 SQL_f+="'%(所在页面)s',"
-SQL_f+="'%(用户)s',"
+SQL_f+="%(用户)s,"
 SQL_f+="'%(事件类型)s',"
-SQL_f+="'%(事件描述)s'"
+SQL_f+="%(事件描述)s"
 SQL_f+="),"
 SQL_d={}
 
@@ -75,15 +75,15 @@ def no_user_cat(event_name,event_desc):
     cat_data(SQL_d)
 
 #100次无用户点击
-for i in range(0,50):
+for i in range(0,100):
     no_user_cat(event_type_name['点击'],'null')
     
 #100次无用户访问
-for i in range(0,50):
+for i in range(0,100):
     no_user_cat(event_type_name['访问页面'],'null')
 
 #100次无用户产品点击
-for i in range(0,50):
+for i in range(0,100):
     no_user_cat(event_type_name['查看产品'],getRandomList(products))
 
 #用户注册
@@ -99,14 +99,15 @@ for user in users:
     cat_data(SQL_d)
     reg_time=datetime.strptime(SQL_d['时间'],'%Y-%m-%d %H:%M:%S')
     #每个用户10次点击
-    for i in range(0,2):
+    for i in range(0,50):
         user_cat(reg_time,user,event_type_name['点击'],'null')
     #每个用户10次访问
-    for i in range(0,2):
+    for i in range(0,50):
         user_cat(reg_time,user,event_type_name['访问页面'],'null')
     #每个用户10次产品点击
-    for i in range(0,2):
+    for i in range(0,50):
         user_cat(reg_time,user,event_type_name['查看产品'],getRandomList(products))
 
+print(SQL)
 cursor.execute(SQL[0:-1])
 dbc.commit()

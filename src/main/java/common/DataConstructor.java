@@ -1,6 +1,6 @@
 package common;
 
-import net.sf.json.JSONArray;
+import net.sf.json.JSON;
 
 /**
  * 数据构造器接口，用于从数据库中读数据并构造成JSON
@@ -16,7 +16,7 @@ public interface DataConstructor {
      * @param conn 输入数据库连接
      * @return 返回数据正文
      */
-    public JSONArray getData(DataConnector conn);//获取字段数据
+    public JSON getData(DataConnector conn);//获取字段数据
 
     public static DataConstructor instance = null;
 
