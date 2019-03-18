@@ -33,7 +33,7 @@ public class NewuserPerDaysDataConstructor implements DataConstructor {
     public JSONArray getData(DataConnector conn) {
         String[][] timeTable = Tools.getTimeTable(conn, name, dataNum);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        return Tools.matrixJSONArray(Tools.smoothTimeTable(timeTable,dataNum,60*60*1000,df));
+        return Tools.matrixJSONArray(Tools.smoothTimeTable(timeTable,dataNum,24*60*60*1000,df));
     }
 
     @Override
