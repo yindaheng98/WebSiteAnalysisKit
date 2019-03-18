@@ -75,15 +75,15 @@ def no_user_cat(event_name,event_desc):
     cat_data(SQL_d)
 
 #100次无用户点击
-for i in range(0,100):
+for i in range(0,50):
     no_user_cat(event_type_name['点击'],'null')
     
 #100次无用户访问
-for i in range(0,100):
+for i in range(0,50):
     no_user_cat(event_type_name['访问页面'],'null')
 
 #100次无用户产品点击
-for i in range(0,100):
+for i in range(0,50):
     no_user_cat(event_type_name['查看产品'],getRandomList(products))
 
 #用户注册
@@ -99,15 +99,14 @@ for user in users:
     cat_data(SQL_d)
     reg_time=datetime.strptime(SQL_d['时间'],'%Y-%m-%d %H:%M:%S')
     #每个用户10次点击
-    for i in range(0,10):
+    for i in range(0,2):
         user_cat(reg_time,user,event_type_name['点击'],'null')
     #每个用户10次访问
-    for i in range(0,10):
+    for i in range(0,2):
         user_cat(reg_time,user,event_type_name['访问页面'],'null')
     #每个用户10次产品点击
-    for i in range(0,10):
+    for i in range(0,2):
         user_cat(reg_time,user,event_type_name['查看产品'],getRandomList(products))
 
-print(SQL)
 cursor.execute(SQL[0:-1])
 dbc.commit()
