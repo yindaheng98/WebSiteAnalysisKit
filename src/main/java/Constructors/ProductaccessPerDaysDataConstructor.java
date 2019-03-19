@@ -15,17 +15,17 @@ import java.util.Set;
 /**
  * 获取每天访问量的构造器
  */
-public class PageaccessPerDaysDataConstructor implements DataConstructor {
-    private static PageaccessPerDaysDataConstructor instance;
+public class ProductaccessPerDaysDataConstructor implements DataConstructor {
+    private static ProductaccessPerDaysDataConstructor instance;
     private int dataNum = 1000;
-    private String name = "日页面访问量";
+    private String name = "日产品访问量";
 
     /**
      * 构造函数
      *
      * @param dataNum 每次想要多少数据？
      */
-    public PageaccessPerDaysDataConstructor(int dataNum) {
+    public ProductaccessPerDaysDataConstructor(int dataNum) {
         this.dataNum = dataNum;
     }
 
@@ -42,7 +42,7 @@ public class PageaccessPerDaysDataConstructor implements DataConstructor {
                 name,
                 "时间",
                 "访问量",
-                "页面",
+                "产品",
                 (long) 24 * 60 * 60 * 1000,
                 df,
                 "0",
@@ -52,7 +52,7 @@ public class PageaccessPerDaysDataConstructor implements DataConstructor {
     @Override
     public DataConstructor getInstance() {
         if (instance == null) {
-            instance = new PageaccessPerDaysDataConstructor(dataNum);
+            instance = new ProductaccessPerDaysDataConstructor(dataNum);
         }
         return instance;
     }

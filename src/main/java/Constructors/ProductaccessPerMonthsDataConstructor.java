@@ -15,17 +15,17 @@ import java.util.Set;
 /**
  * 获取每天访问量的构造器
  */
-public class PageaccessPerDaysDataConstructor implements DataConstructor {
-    private static PageaccessPerDaysDataConstructor instance;
+public class ProductaccessPerMonthsDataConstructor implements DataConstructor {
+    private static ProductaccessPerMonthsDataConstructor instance;
     private int dataNum = 1000;
-    private String name = "日页面访问量";
+    private String name = "月产品访问量";
 
     /**
      * 构造函数
      *
      * @param dataNum 每次想要多少数据？
      */
-    public PageaccessPerDaysDataConstructor(int dataNum) {
+    public ProductaccessPerMonthsDataConstructor(int dataNum) {
         this.dataNum = dataNum;
     }
 
@@ -36,14 +36,14 @@ public class PageaccessPerDaysDataConstructor implements DataConstructor {
 
     @Override
     public JSON getData(DataConnector conn) {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM");
         return ItemTimeTableTools.getSmoothedJSONItemTimeTable(
                 conn,
                 name,
                 "时间",
                 "访问量",
-                "页面",
-                (long) 24 * 60 * 60 * 1000,
+                "产品",
+                (long) 31 * 24 * 60 * 60 * 1000,
                 df,
                 "0",
                 dataNum);
@@ -52,7 +52,7 @@ public class PageaccessPerDaysDataConstructor implements DataConstructor {
     @Override
     public DataConstructor getInstance() {
         if (instance == null) {
-            instance = new PageaccessPerDaysDataConstructor(dataNum);
+            instance = new ProductaccessPerMonthsDataConstructor(dataNum);
         }
         return instance;
     }

@@ -1,8 +1,9 @@
 package Constructors;
 
+import Constructors.tools.ItemTimeTableTools;
+import Constructors.tools.Tools;
 import common.DataConnector;
 import common.DataConstructor;
-import common.Tools;
 import net.sf.json.JSON;
 import net.sf.json.JSONObject;
 
@@ -35,16 +36,17 @@ public class PageaccessPerHoursDataConstructor implements DataConstructor {
 
     @Override
     public JSON getData(DataConnector conn) {
-        Map<String, String[][]> itemTimeTable = Tools.getItemTimeTable(conn, name, "时间", "访问量", "页面", dataNum);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        JSONObject result = new JSONObject();
-        Set<String> items = itemTimeTable.keySet();
-        for (String item : items) {
-            String[][] timeTable = itemTimeTable.get(item);
-            timeTable = Tools.smoothTimeTable(timeTable, dataNum, 60 * 60 * 1000, df);
-            result.element(item, Tools.matrixJSONArray(timeTable));
-        }
-        return result;
+        return ItemTimeTableTools.getSmoothedJSONItemTimeTable(
+                conn,
+                name,
+                "时间",
+                "访问量",
+                "页面",
+                (long) 60 * 60 * 1000,
+                df,
+                "0",
+                dataNum);
     }
 
     @Override

@@ -1,8 +1,8 @@
 package Constructors;
 
+import Constructors.tools.Tools;
 import common.DataConnector;
 import common.DataConstructor;
-import common.Tools;
 import net.sf.json.JSON;
 
 import java.text.SimpleDateFormat;
@@ -34,7 +34,7 @@ public class AccessPerDaysDataConstructor implements DataConstructor {
     public JSON getData(DataConnector conn) {
         String[][] timeTable = Tools.getTimeTable(conn, name, "时间", "访问量", dataNum);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        return Tools.matrixJSONArray(Tools.smoothTimeTable(timeTable, dataNum, 24 * 60 * 60 * 1000, df));
+        return Tools.matrixJSONArray(Tools.smoothTimeTable(timeTable, dataNum, 24 * 60 * 60 * 1000, df,"0"));
     }
 
     @Override
