@@ -31,7 +31,7 @@ SQL_count="SELECT 日期,count(*) FROM(\
 SELECT date(时间) AS 日期 FROM 事件记录 WHERE \
 事件类型='%s' AND \
 Date(时间) BETWEEN date('%%s')+1 AND date(now())-1\
-) AS T GROUP BY 日期"%event_type_name['注册完成']
+) AS T GROUP BY 日期  ORDER BY 日期 ASC"%event_type_name['注册完成']
 process('日新增用户数量',SQL_count)
 
 """统计月新增用户量"""
@@ -40,7 +40,7 @@ SELECT date(concat(year(时间),'-',month(时间),'-01')) AS 日期,数量 \
 FROM 日新增用户数量 WHERE 时间 BETWEEN \
 date_add(date('%s'),interval 1 month) AND \
 date(concat(year(now()),'-',month(now()),'-01'))-1\
-) AS T GROUP BY 日期"
+) AS T GROUP BY 日期  ORDER BY 日期 ASC"
 process('月新增用户数量',SQL_count)
 
 """统计年新增用户量"""
@@ -49,29 +49,34 @@ SELECT date(concat(year(时间),'-01-01')) AS 日期,数量 \
 FROM 月新增用户数量 WHERE 时间 BETWEEN \
 date_add(date('%s'),interval 1 year) AND \
 date(concat(year(now()),'-01-01'))-1\
-) AS T GROUP BY 日期"
+) AS T GROUP BY 日期  ORDER BY 日期 ASC"
 process('年新增用户数量',SQL_count)
 
-"""每天都统计用户总量"""
-local_create_table('用户总量')
-last_count=local_get_last_count('用户总量')
-if type(last_count) is str:#如果此前不曾统计过总用户量
-    SQL="SELECT min(时间),数量 FROM 日新增用户数量"
-    first_count=query_fetch(SQL)[0]
-    #就在开头先插一个数据
-    SQL="INSERT INTO 用户总量(时间,数量)VALUES('%s','%d')"%first_count
-    execute_commit(SQL)
 
-SQL="SELECT max(时间),数量 FROM 用户总量"
-last_count,user_total=query_fetch(SQL)[0]
-SQL="SELECT 时间,数量 FROM 日新增用户数量 \
-WHERE 时间<date(now()) AND 时间>'%s' order by 时间 asc"%last_count
-useradd_everyday=query_fetch(SQL)
-usertotal_everyday=[]
-for date,useradd in useradd_everyday:
-    user_total+=useradd
-    usertotal_everyday.append((date,user_total))
-SQL_f="INSERT INTO 用户总量(时间,数量)VALUES('%s','%d')"
-insert_datas(SQL_f,usertotal_everyday)
+def process_total(table_total,table_diff):
+    local_create_table(table_total)
+    last_count=local_get_last_count(table_total)
+    if type(last_count) is str:#如果此前不曾统计过总用户量
+        SQL="SELECT min(时间),数量 FROM %s"%table_diff
+        first_count=query_fetch(SQL)[0]
+        #就在开头先插一个数据
+        SQL="INSERT INTO "+table_total+"(时间,数量)VALUES('%s','%d')"%first_count
+        execute_commit(SQL)
 
+    SQL="SELECT max(时间),数量 FROM %s"%table_total
+    last_count,user_total=query_fetch(SQL)[0]
+    SQL="SELECT 时间,数量 FROM %s \
+    WHERE 时间<date(now()) AND 时间>'%s' order by 时间 ASC"%(table_diff,last_count)
+    useradd_everyday=query_fetch(SQL)
+    usertotal_everyday=[]
+    for date,useradd in useradd_everyday:
+        user_total+=useradd
+        usertotal_everyday.append((date,user_total))
+    SQL_f="INSERT INTO %s(时间,数量)VALUES('%%s','%%d')"%table_total
+    insert_datas(SQL_f,usertotal_everyday)
+
+"""每天每月每年都统计用户总量"""
+process_total('日用户总量','日新增用户数量')
+process_total('月用户总量','月新增用户数量')
+process_total('年用户总量','年新增用户数量')
 dbc.close()

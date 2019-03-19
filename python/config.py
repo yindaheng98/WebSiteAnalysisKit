@@ -17,5 +17,7 @@ dbc=mysql.connector.connect(
     database="MoniterData"
     )
 
-#月用户活跃度(每月有多少天访问网站)达到多少算活跃用户?
-active_threshold=10
+#月用户活跃度(每月有多少天访问网站)达到多少算月活跃用户?
+daily_active_threshold=10
+#日用户活跃度(每天有多少小时访问网站)达到多少算日活跃用户?
+monthly_active_threshold=2

@@ -30,7 +30,7 @@ def cat_data(SQL_d):
 def getRandomTime():
     timestamp=datetime.now()
     timestamp=time.mktime(timestamp.timetuple())
-    timestamp-=random()*30*24*60*60
+    timestamp-=random()*6*30*24*60*60
     timestamp=datetime.fromtimestamp(timestamp)
     return timestamp.strftime('%Y-%m-%d %H:%M:%S')
 

@@ -3,6 +3,7 @@ create database MoniterData;
 use MoniterData;
 create table 事件记录
 (
+编号 bigint primary key auto_increment,
 时间 datetime not null,
 IP地址 varchar(64) not null,
 设备型号 text not null,

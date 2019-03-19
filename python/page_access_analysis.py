@@ -45,7 +45,7 @@ SQL_count="SELECT 日期,count(*) FROM(\
 SELECT date(时间) AS 日期 FROM 事件记录 WHERE \
 事件类型='%s' AND 所在页面='%s' AND \
 Date(时间) BETWEEN date('%s')+1 AND date(now())-1\
-) AS T GROUP BY 日期"
+) AS T GROUP BY 日期 ORDER BY 日期 ASC"
 process('日页面访问量','date',SQL_count)
 
 """统计小时访问量"""
@@ -54,7 +54,7 @@ SELECT concat(date(时间),' ',hour(时间),':','00') AS 小时 FROM 事件记�
 事件类型='%s' AND 所在页面='%s' AND \
 时间 BETWEEN date_add('%s',interval 1 hour) AND \
 concat(date(now()),' ',hour(now()),':','00')\
-) AS T GROUP BY 小时"
+) AS T GROUP BY 小时 ORDER BY 小时 ASC"
 process('小时页面访问量','datetime',SQL_count)
 
 dbc.close()
