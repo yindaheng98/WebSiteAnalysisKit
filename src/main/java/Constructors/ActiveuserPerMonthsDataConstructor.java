@@ -5,7 +5,6 @@ import Constructors.tools.Tools;
 import common.DataConnector;
 import common.DataConstructor;
 import net.sf.json.JSON;
-import net.sf.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 
@@ -34,15 +33,10 @@ public class ActiveuserPerMonthsDataConstructor implements DataConstructor {
 
     @Override
     public JSON getData(DataConnector conn) {
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM");
         String[][] timeTable = Tools.getTimeTable(conn, name, "时间", "数量", dataNum);
         timeTable = SmoothTimeTableTools.smoothTimeTable(timeTable, dataNum, "month", df);
-        String[][] timeTableTotal = Tools.getTimeTable(conn, "月用户总量", "时间", "数量", dataNum);
-        timeTableTotal = SmoothTimeTableTools.smoothTimeTable(timeTableTotal, dataNum, "month", df);
-        JSONObject result = new JSONObject();
-        result.element("活跃量", Tools.matrixJSONArray(timeTable));
-        result.element("总量", Tools.matrixJSONArray(timeTableTotal));
-        return result;
+        return Tools.matrixJSONArray(timeTable);
     }
 
     @Override

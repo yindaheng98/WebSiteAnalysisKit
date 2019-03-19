@@ -23,6 +23,8 @@ public class TestDataReacher {
         dr.addConstructor(new ActiveuserPerMonthsDataConstructor(12));
         dr.addConstructor(new ProductaccessPerDaysDataConstructor(30));
         dr.addConstructor(new ProductaccessPerMonthsDataConstructor(12));
+        dr.addConstructor(new TotaluserPerDaysDataConstructor(30));
+        dr.addConstructor(new TotaluserPerMonthsDataConstructor(12));
     }
 
     @Test
