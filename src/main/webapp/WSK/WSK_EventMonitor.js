@@ -1,5 +1,5 @@
 /*这个文件定义了专门用于监测特殊的点击事件函数*/
-function recordEvent(event_type,event_description) {
+function WSK_recordEvent(event_type,event_description) {
     if (typeof WSK_servlet_url === 'undefined' ||
         WSK_servlet_url === null ||
         WSK_servlet_url === '' ||
