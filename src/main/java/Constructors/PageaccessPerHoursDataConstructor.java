@@ -43,7 +43,7 @@ public class PageaccessPerHoursDataConstructor implements DataConstructor {
                 "时间",
                 "访问量",
                 "页面",
-                (long) 60 * 60 * 1000,
+                "hour",
                 df,
                 "0",
                 dataNum);

@@ -1,5 +1,6 @@
 package Constructors;
 
+import Constructors.tools.SmoothTimeTableTools;
 import Constructors.tools.Tools;
 import common.DataConnector;
 import common.DataConstructor;
@@ -35,12 +36,12 @@ public class ActiveuserPerDaysDataConstructor implements DataConstructor {
     public JSON getData(DataConnector conn) {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         String[][] timeTable = Tools.getTimeTable(conn, name, "时间", "数量", dataNum);
-        timeTable=Tools.smoothTimeTable(timeTable, dataNum, 24 * 60 * 60 * 1000, df);
-        String[][]timeTableTotal=Tools.getTimeTable(conn,"日用户总量","时间","数量",dataNum);
-        timeTableTotal=Tools.smoothTimeTable(timeTableTotal, dataNum, 24 * 60 * 60 * 1000, df);
-        JSONObject result=new JSONObject();
-        result.element("活跃量",Tools.matrixJSONArray(timeTable));
-        result.element("总量",Tools.matrixJSONArray(timeTableTotal));
+        timeTable = SmoothTimeTableTools.smoothTimeTable(timeTable, dataNum, "day", df);
+        String[][] timeTableTotal = Tools.getTimeTable(conn, "日用户总量", "时间", "数量", dataNum);
+        timeTableTotal = SmoothTimeTableTools.smoothTimeTable(timeTableTotal, dataNum, "day", df);
+        JSONObject result = new JSONObject();
+        result.element("活跃量", Tools.matrixJSONArray(timeTable));
+        result.element("总量", Tools.matrixJSONArray(timeTableTotal));
         return result;
     }
 

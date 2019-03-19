@@ -1,5 +1,6 @@
 package Constructors;
 
+import Constructors.tools.SmoothTimeTableTools;
 import Constructors.tools.Tools;
 import common.DataConnector;
 import common.DataConstructor;
@@ -34,7 +35,7 @@ public class NewuserPerMonthsDataConstructor implements DataConstructor {
     public JSON getData(DataConnector conn) {
         String[][] timeTable = Tools.getTimeTable(conn, name, "时间", "数量", dataNum);
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM");
-        return Tools.matrixJSONArray(Tools.smoothTimeTable(timeTable, dataNum, 30 * 60 * 60 * 1000, df,"0"));
+        return Tools.matrixJSONArray(SmoothTimeTableTools.smoothTimeTable(timeTable, dataNum, "month", df, "0"));
     }
 
     @Override

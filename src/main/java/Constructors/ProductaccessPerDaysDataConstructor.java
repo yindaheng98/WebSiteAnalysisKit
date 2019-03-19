@@ -43,7 +43,7 @@ public class ProductaccessPerDaysDataConstructor implements DataConstructor {
                 "时间",
                 "访问量",
                 "产品",
-                (long) 24 * 60 * 60 * 1000,
+                "day",
                 df,
                 "0",
                 dataNum);

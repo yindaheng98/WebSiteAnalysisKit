@@ -66,7 +66,8 @@ public class ItemTimeTableTools {
                                                     String time_col,
                                                     String data_col,
                                                     String item_col,
-                                                    long time_dif, SimpleDateFormat df,
+                                                    String time_dif_which,
+                                                    SimpleDateFormat df,
                                                     String fill,
                                                     int limit) {
         Map<String, String[][]> itemTimeTable = getItemTimeTable(conn, table_name, time_col, data_col, item_col, limit);
@@ -74,7 +75,7 @@ public class ItemTimeTableTools {
         Set<String> items = itemTimeTable.keySet();
         for (String item : items) {
             String[][] timeTable = itemTimeTable.get(item);
-            timeTable = Tools.smoothTimeTable(timeTable, limit, time_dif, df, fill);
+            timeTable = SmoothTimeTableTools.smoothTimeTable(timeTable, limit, time_dif_which, df, fill);
             result.element(item, Tools.matrixJSONArray(timeTable));
         }
         return result;

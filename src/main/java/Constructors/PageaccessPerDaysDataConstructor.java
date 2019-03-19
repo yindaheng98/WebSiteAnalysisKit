@@ -43,7 +43,7 @@ public class PageaccessPerDaysDataConstructor implements DataConstructor {
                 "时间",
                 "访问量",
                 "页面",
-                (long) 24 * 60 * 60 * 1000,
+                "day",
                 df,
                 "0",
                 dataNum);
