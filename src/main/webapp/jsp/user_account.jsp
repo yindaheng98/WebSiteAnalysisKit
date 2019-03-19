@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="utf-8" %>
-<%@ page import="common.Tools" %>
+<%@ page import="Constructors.tools.Tools" %>
 <SCRIPT LANGUAGE="JavaScript">
     d = [];
     label = "日新增用户数量";
