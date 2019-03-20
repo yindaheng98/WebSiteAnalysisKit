@@ -2,6 +2,7 @@ package Constructors.tools;
 
 import common.DataConnector;
 import net.sf.json.JSON;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import java.sql.ResultSet;
@@ -50,16 +51,16 @@ public class ItemTimeTableTools {
     /**
      * 将上面那个函数获取到的和item相关的时间表一类的数据smooth后转成JSON
      *
-     * @param conn       输入数据连接
-     * @param table_name 输入表名
-     * @param time_col   输入存时间的列名
-     * @param data_col   输入存数据的列名
-     * @param item_col   输入存着item名的那一列叫什么
-     * @param time_dif   时间间隔统一为多少，以毫秒记
-     * @param df         返回的时间格式是什么
-     * @param fill       缺失数据的地方补什么
-     * @param limit      选出多少条数据
-     * @return JSON:{item名称:[[时间],[数据]],...}
+     * @param conn           输入数据连接
+     * @param table_name     输入表名
+     * @param time_col       输入存时间的列名
+     * @param data_col       输入存数据的列名
+     * @param item_col       输入存着item名的那一列叫什么
+     * @param time_dif_which 指定时间间隔单位
+     * @param df             返回的时间格式是什么
+     * @param fill           缺失数据的地方补什么
+     * @param limit          选出多少条数据
+     * @return JSON:[[时间],{item名称1:[数据1],...]
      */
     public static JSON getSmoothedJSONItemTimeTable(DataConnector conn,
                                                     String table_name,
@@ -71,13 +72,23 @@ public class ItemTimeTableTools {
                                                     String fill,
                                                     int limit) {
         Map<String, String[][]> itemTimeTable = getItemTimeTable(conn, table_name, time_col, data_col, item_col, limit);
-        JSONObject result = new JSONObject();
-        Set<String> items = itemTimeTable.keySet();
-        for (String item : items) {
-            String[][] timeTable = itemTimeTable.get(item);
-            timeTable = SmoothTimeTableTools.smoothTimeTable(timeTable, limit, time_dif_which, df, fill);
-            result.element(item, Tools.matrixJSONArray(timeTable));
+        String[] items = new String[itemTimeTable.size()];
+        String[][][] itemTimeTables = new String[itemTimeTable.size()][][];
+        {
+            int i = 0;
+            for (String item : itemTimeTable.keySet()) {
+                items[i] = item;
+                itemTimeTables[i] = itemTimeTable.get(item);
+                i++;
+            }
         }
+        String[][] smoothedItemTables = SmoothTimeTableTools.mergeTimeTable(itemTimeTables, limit, time_dif_which, df, fill);
+        JSONArray result = new JSONArray();
+        result.element(smoothedItemTables[0]);
+        JSONObject itemData = new JSONObject();
+        for (int i = 0; i < items.length; i++)
+            itemData.element(items[i], smoothedItemTables[i + 1]);
+        result.element(itemData);
         return result;
     }
 }

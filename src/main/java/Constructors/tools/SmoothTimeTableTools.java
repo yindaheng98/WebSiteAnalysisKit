@@ -1,23 +1,74 @@
 package Constructors.tools;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * smoothTimeTable以及他的各种重载
  */
 public class SmoothTimeTableTools {
     /**
-     * 把上面那个函数返回的不连续的时间表变得连续（统一时间间隔）
+     * 把不连续的时间表变得连续然后合并（统一时间间隔）
+     *
+     * @param timeTables        需要变连续然后合并的时间表
+     * @param dataNum           统一后的表要多长
+     * @param time_dif_which    指定时间间隔单位
+     * @param df                返回的时间格式是什么
+     * @param fill              缺失数据的地方补什么
+     * @return 返回连续的时间表
+     */
+    public static String[][] mergeTimeTable(String[][][] timeTables,
+                                            int dataNum,
+                                            String time_dif_which,
+                                            SimpleDateFormat df,
+                                            String fill) {
+        Date t_max = new Timestamp(0);
+        for (String[][] timeTable : timeTables) {
+            try {
+                Date t = df.parse(timeTable[0][0]);
+                if (t.getTime() > t_max.getTime()) t_max = t;
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }//选出最远的时间
+        String t_max_str = df.format(t_max);
+        for (int i = 0; i < timeTables.length; i++) {
+            String[][] timeTable = timeTables[i];
+            try {
+                Date t = df.parse(timeTable[0][0]);
+                if (t.getTime() < t_max.getTime()) {
+                    String[][] newTimeTable = new String[2][timeTable.length];
+                    System.arraycopy(timeTable[0], 0, newTimeTable[0], 1, timeTable.length - 1);
+                    System.arraycopy(timeTable[1], 0, newTimeTable[1], 1, timeTable.length - 1);
+                    newTimeTable[0][0] = t_max_str;
+                    newTimeTable[1][0] = fill == null ? timeTable[1][0] : fill;
+                    timeTable = newTimeTable;
+                }//时间补齐
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            timeTables[i] = smoothTimeTable(timeTable, dataNum, time_dif_which, df, fill);
+        }
+        String[][] merged = new String[timeTables.length + 1][dataNum];
+        merged[0] = timeTables[0][0];
+        for (int i = 0; i < timeTables.length; i++)
+            merged[i + 1] = timeTables[i][1];
+        return merged;
+    }
+
+    /**
+     * 把不连续的时间表变得连续（统一时间间隔）
      *
      * @param timeTable         需要变连续的时间表
      * @param dataNum           统一后的表要多长
      * @param time_dif_which    指定时间间隔单位
      * @param time_dif_how_much 指定时间间隔长度
      * @param df                返回的时间格式是什么
-     * @param fill              缺失数据的地方补什么
+     * @param fill              缺失数据的地方补什么，如果为null则在timeTable[i]处补上timeTable[i-1]的值
      * @return 返回连续的时间表
      */
     public static String[][] smoothTimeTable(String[][] timeTable,
@@ -70,7 +121,7 @@ public class SmoothTimeTableTools {
     }
 
     /**
-     * 把上面那个函数返回的不连续的时间表变得连续（统一时间间隔，没有数据的地方补前一个时间的数据）
+     * 把不连续的时间表变得连续（统一时间间隔，没有数据的地方补前一个时间的数据）
      *
      * @param timeTable      需要变连续的时间表
      * @param dataNum        统一后的表要多长
@@ -87,7 +138,7 @@ public class SmoothTimeTableTools {
     }
 
     /**
-     * 把上面那个函数返回的不连续的时间表变得连续（统一时间间隔，没有数据的地方补前一个时间的数据）
+     * 把不连续的时间表变得连续（统一时间间隔，没有数据的地方补前一个时间的数据）
      *
      * @param timeTable      需要变连续的时间表
      * @param dataNum        统一后的表要多长
@@ -103,7 +154,7 @@ public class SmoothTimeTableTools {
     }
 
     /**
-     * 把上面那个函数返回的不连续的时间表变得连续（统一时间间隔，没有数据的地方补前一个时间的数据）
+     * 把不连续的时间表变得连续（统一时间间隔，没有数据的地方补前一个时间的数据）
      *
      * @param timeTable         需要变连续的时间表
      * @param dataNum           统一后的表要多长
@@ -120,7 +171,7 @@ public class SmoothTimeTableTools {
         return smoothTimeTable(timeTable, dataNum, time_dif_which, time_dif_how_much, df, null);
     }
 
-    public static Date addTime(Date cur, String which, int how_much) {
+    private static Date addTime(Date cur, String which, int how_much) {
         assert which.equals("year") ||
                 which.equals("month") ||
                 which.equals("day") ||
