@@ -31,7 +31,7 @@ public class TestDataReacher {
     public void Test() {
         try {
 
-            PrintStream print = new PrintStream("test.txt");  //写好输出位置文件；
+            PrintStream print = new PrintStream("test.json");  //写好输出位置文件；
             System.setOut(print);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
