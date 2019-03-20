@@ -15,5 +15,5 @@ IP地址 varchar(64) not null,
 );
 drop user if exists MoniterData@localhost;
 create user MoniterData@localhost identified by 'MoniterData';
-grant create,select,update,insert on MoniterData.* to MoniterData@localhost;
+grant create,select,update,insert,drop on MoniterData.* to MoniterData@localhost;
 flush privileges;

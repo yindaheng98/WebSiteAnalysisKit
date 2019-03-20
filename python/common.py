@@ -12,12 +12,6 @@ def execute_commit(SQL):
     cursor.execute(SQL)
     dbc.commit()
 
-def get_last_count(SQL):
-    last_count=query_fetch(SQL)[0][0]
-    if last_count==None:
-        last_count='1970-01-01 00:00:00'
-    return last_count
-
 def insert_datas(SQL_f,datas):
     for data in datas:
         SQL=SQL_f%data
