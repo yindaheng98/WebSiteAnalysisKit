@@ -13,12 +13,13 @@ public class TestDataReacher {
     @Before
     public void init() {
         dr = new DataReacher(null);
-        dr.addConstructor(new AccessPerHoursDataConstructor(1000));
+        dr.addConstructor(new AccessPerHoursDataConstructor(30 * 24));
         dr.addConstructor(new AccessPerDaysDataConstructor(30));
+        dr.addConstructor(new AccessPerMonthsDataConstructor(12));
         dr.addConstructor(new NewuserPerDaysDataConstructor(30));
         dr.addConstructor(new NewuserPerMonthsDataConstructor(12));
         dr.addConstructor(new PageaccessPerDaysDataConstructor(30));
-        dr.addConstructor(new PageaccessPerHoursDataConstructor(1000));
+        dr.addConstructor(new PageaccessPerHoursDataConstructor(30 * 24));
         dr.addConstructor(new ActiveuserPerDaysDataConstructor(30));
         dr.addConstructor(new ActiveuserPerMonthsDataConstructor(12));
         dr.addConstructor(new ProductaccessPerDaysDataConstructor(30));
