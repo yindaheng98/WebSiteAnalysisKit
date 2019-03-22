@@ -40,6 +40,15 @@ def process(table_name,key_type,SQL_count):
             cursor.execute(SQL)
             dbc.commit()
 
+"""统计月访问量"""
+SQL_count="SELECT 日期,count(*) FROM(\
+SELECT concat(year(时间),'-',month(时间),'-','01') AS 日期 FROM 事件记录 WHERE \
+事件类型='%s' AND 所在页面='%s' AND \
+date(时间) BETWEEN date_add('%s',interval -1 month) AND \
+date_add(concat(year(now()),'-',month(now()),'-','01 00:00:00'),interval -1 second)\
+) AS T GROUP BY 日期 ORDER BY 日期 ASC"
+process('月页面访问量','date',SQL_count)
+
 """统计日访问量"""
 SQL_count="SELECT 日期,count(*) FROM(\
 SELECT date(时间) AS 日期 FROM 事件记录 WHERE \

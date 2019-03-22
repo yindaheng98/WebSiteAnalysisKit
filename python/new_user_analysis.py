@@ -57,7 +57,7 @@ def process_total(table_total,table_diff):
     local_create_table(table_total)
     last_count=local_get_last_count(table_total)
     if type(last_count) is str:#如果此前不曾统计过总用户量
-        SQL="SELECT min(时间),数量 FROM %s"%table_diff
+        SQL="SELECT min(时间),数量+1 FROM %s"%table_diff
         first_count=query_fetch(SQL)[0]
         #就在开头先插一个数据
         SQL="INSERT INTO "+table_total+"(时间,数量)VALUES('%s','%d')"%first_count

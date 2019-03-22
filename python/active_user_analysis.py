@@ -65,12 +65,12 @@ def user_active_count_table(table_name,SQL_s):
 SQL_s="SELECT 时间,count(用户) FROM 月用户活跃度 WHERE \
 访问数>=%d AND \
 时间 BETWEEN date_add(date('%%s'),interval 1 month) AND \
-date(concat(year(now()),'-',month(now()),'-01')) \
+date_add(concat(year(now()),'-',month(now()),'-01 00:00:00'),interval -1 second) \
 GROUP BY 时间 ORDER BY 时间 ASC"%(monthly_active_threshold)
 user_active_count_table('月活跃用户量',SQL_s)
 SQL_s="SELECT 时间,count(用户) FROM 日用户活跃度 WHERE \
 访问数>=%d AND 时间 \
-BETWEEN date_add(date('%%s'),interval 1 day) AND date(now()) \
+BETWEEN date_add(date('%%s'),interval 1 day) AND date(now())-1 \
 GROUP BY 时间 ORDER BY 时间 ASC"%(daily_active_threshold)
 user_active_count_table('日活跃用户量',SQL_s)
 
