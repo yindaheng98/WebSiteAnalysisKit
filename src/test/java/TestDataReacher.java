@@ -18,6 +18,7 @@ public class TestDataReacher {
         dr.addConstructor(new AccessPerMonthsDataConstructor(12));
         dr.addConstructor(new NewuserPerDaysDataConstructor(30));
         dr.addConstructor(new NewuserPerMonthsDataConstructor(12));
+        dr.addConstructor(new PageaccessPerMonthsDataConstructor(30));
         dr.addConstructor(new PageaccessPerDaysDataConstructor(30));
         dr.addConstructor(new PageaccessPerHoursDataConstructor(30 * 24));
         dr.addConstructor(new ActiveuserPerDaysDataConstructor(30));
