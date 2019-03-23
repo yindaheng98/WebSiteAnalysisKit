@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>淘宝网 - 淘！我喜欢</title>
+    <link href="css.css" type="text/css" rel="stylesheet" >
+    <script src="../WSK/WSK_Common.js"></script>
+    <script src="../WSK/WSK_ClickMonitor.js"></script>
+    <script src="../WSK/WSK_EventMonitor.js"></script>
+</head>
+<body>
+    <div id="first">
+        <div class="first_left">
+            <ul>
+                <li>中国大陆<i class="arrow_one"></i></li>
+                <li><a href="">亲，请登录</a></li>
+                <li><a href="" onclick="WSK_recordEvent('注册完成')">免费注册</a></li>
+                <li><a href="">手机逛淘宝</a></li>
+            </ul>
+        </div>
+        <div class="first_right">
+            <ul>
+                <li><a href="" onclick="WSK_recordEvent('访问页面','个人主页')">我的淘宝<i class="arrow_one"></i></a></li>
+                <li><a href="" onclick="WSK_recordEvent('访问页面','购物车页面')">购物车<i class="arrow_one"></i></a></li>
+                <li><a href="" onclick="WSK_recordEvent('访问页面','收藏夹页面')">收藏夹<i class="arrow_one"></i></a></li>
+                <li><a href="" onclick="WSK_recordEvent('访问页面','商品分类页面')">商品分类</a></li>
+                <li><a href="" onclick="WSK_recordEvent('访问页面','卖家中心页面')">卖家中心<i class="arrow_one"></i></a></li>
+                <li><a href="" onclick="WSK_recordEvent('访问页面','客服页面')">联系客服<i class="arrow_one"></i></a></li>
+                <li><a href="" onclick="WSK_recordEvent('访问页面','网站导航页面')">网站导航<i class="arrow_one"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="second">
+        <div class="second_left">
+            <a href="//www.taobao.com"><img src="images/timgT9X1T6TS.jpg" class="logo"></a>
+        </div>
+        <div class="second_middle">
+            <div class="sm_one">
+                <ul>
+                    <li>宝贝</li>
+                    <li>天猫</li>
+                    <li>店铺</li>
+                </ul>
+            </div>
+            <div class="sm_two">
+                <input type="text" class="search">
+                <p>搜索</p>
+            </div>
+            <div class="sm_three">
+                <ul>
+                    <li><a href="" onclick="WSK_recordEvent('查看产品','新款连衣裙')">新款连衣裙</a></li>
+                    <li><a href="" onclick="WSK_recordEvent('查看产品','四件套')">四件套</a></li>
+                    <li><a href="" onclick="WSK_recordEvent('查看产品','潮流T恤')">潮流T恤</a></li>
+                    <li><a href="" onclick="WSK_recordEvent('查看产品','时尚女鞋')">时尚女鞋</a></li>
+                    <li><a href="" onclick="WSK_recordEvent('查看产品','短裤')">短裤</a></li>
+                    <li><a href="" onclick="WSK_recordEvent('查看产品','半身裙')">半身裙</a></li>
+                    <li><a href="" onclick="WSK_recordEvent('查看产品','男士外套')">男士外套</a></li>
+                    <li><a href="" onclick="WSK_recordEvent('查看产品','墙纸')">墙纸</a></li>
+                    <li><a href="" onclick="WSK_recordEvent('查看产品','行车记录仪')">行车记录仪</a></li>
+                    <li><a href="" onclick="WSK_recordEvent('查看产品','新款男鞋')">新款男鞋</a></li>
+                    <li><a href="" onclick="WSK_recordEvent('查看产品','耳机')">耳机</a></li>
+                    <li><a href="" onclick="WSK_recordEvent('查看产品','时尚女包')">时尚女包</a></li>
+                    <li><a href="" onclick="WSK_recordEvent('查看产品','耳机')">耳机</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="second_right">
+            <a href="https://www.taobao.com/m?spm=a21bo.2017.201858.1.5af911d9Li4QHd" class="app"><img src="images/下载.png" class="code"></a>
+        </div>
+    </div>
+    <div id="third">
+        <p class="third_left">主题市场</p>
+        <ul>
+            <li><a href="" onclick="WSK_recordEvent('访问页面','天猫')">天猫</a></li>
+            <li><a href="" onclick="WSK_recordEvent('访问页面','聚划算')">聚划算</a></li>
+            <li><a href="" onclick="WSK_recordEvent('访问页面','天猫超市')">天猫超市</a></li>
+            <li>丨</li>
+            <li><a href="" onclick="WSK_recordEvent('访问页面','淘抢购')">淘抢购</a></li>
+            <li><a href="" onclick="WSK_recordEvent('访问页面','电器城')">电器城</a></li>
+            <li><a href="" onclick="WSK_recordEvent('访问页面','司法拍卖')">司法拍卖</a></li>
+            <li><a href="" onclick="WSK_recordEvent('访问页面','淘宝心选')">淘宝心选</a></li>
+            <li><a href="" onclick="WSK_recordEvent('访问页面','兴农扶贫')">兴农扶贫</a></li>
+            <li>丨</li>
+            <li><a href="" onclick="WSK_recordEvent('访问页面','飞猪旅行')">飞猪旅行</a></li>
+            <li><a href="" onclick="WSK_recordEvent('访问页面','智能生活')">智能生活</a></li>
+            <li><a href="" onclick="WSK_recordEvent('访问页面','苏宁易购')">苏宁易购</a></li>
+        </ul>
+    </div>
+    <div id="fourth">
+        <div class="fourth_one">
+            <ul class="list">
+                <li onclick="WSK_recordEvent('访问页面','女装 / 男装 / 内衣')">
+                    女装 / 男装 / 内衣<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box1">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','女装')">女装</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','男装')">男装</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','内衣')">内衣</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p  onclick="WSK_recordEvent('访问页面','学习 / 卡券 / 本地服务')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+                <li onclick="WSK_recordEvent('访问页面','鞋靴 / 箱包 / 配件')">
+                    鞋靴 / 箱包 / 配件<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box2">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','鞋靴')">鞋靴</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','箱包')">箱包</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','配件')">配件</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p  onclick="WSK_recordEvent('访问页面','学习 / 卡券 / 本地服务')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+                <li onclick="WSK_recordEvent('访问页面','童装玩具 / 孕产 / 用品')">
+                    童装玩具 / 孕产 / 用品<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box3">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','童装玩具')">童装玩具</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','孕产')">孕产</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','用品')">用品</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p  onclick="WSK_recordEvent('访问页面','学习 / 卡券 / 本地服务')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+                <li onclick="WSK_recordEvent('访问页面','家电 / 数码 / 手机')">
+                    家电 / 数码 / 手机<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box4">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','家电')">家电</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','数码')">数码</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','手机')">手机</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p  onclick="WSK_recordEvent('访问页面','学习 / 卡券 / 本地服务')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+                <li onclick="WSK_recordEvent('访问页面','美妆 / 洗护 / 保健品')">
+                    美妆 / 洗护 / 保健品<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box5">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','美妆')">美妆</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','洗护')">洗护</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','保健品')">保健品</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p  onclick="WSK_recordEvent('访问页面','猜你喜欢')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+                <li onclick="WSK_recordEvent('访问页面','珠宝 / 眼镜 / 手表')">
+                    珠宝 / 眼镜 / 手表<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box6">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','珠宝')">珠宝</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','眼镜')">眼镜</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','手表')">手表</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p  onclick="WSK_recordEvent('访问页面','学习 / 卡券 / 本地服务')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+                <li onclick="WSK_recordEvent('访问页面','运动 / 户外 / 乐器')">
+                    运动 / 户外 / 乐器<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box7">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','运动')">运动</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','户外')">户外</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','乐器')">乐器</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p  onclick="WSK_recordEvent('访问页面','猜你喜欢')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+                <li onclick="WSK_recordEvent('访问页面','游戏 / 动漫 / 影视')">
+                    游戏 / 动漫 / 影视<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box8">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','游戏')">游戏</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','动漫')">动漫</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','影视')">影视</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p  onclick="WSK_recordEvent('访问页面','猜你喜欢')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+                <li onclick="WSK_recordEvent('访问页面','美食 / 生鲜 / 零食')">
+                    美食 / 生鲜 / 零食<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box9">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','美食')">美食</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','生鲜')">生鲜</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','零食')">零食</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p  onclick="WSK_recordEvent('访问页面','猜你喜欢')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+                <li onclick="WSK_recordEvent('访问页面','鲜花 / 宠物 / 农资')">
+                    鲜花 / 宠物 / 农资<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box10">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','鲜花')">鲜花</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','宠物')">宠物</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','农资')">农资</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p  onclick="WSK_recordEvent('访问页面','猜你喜欢')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+                <li onclick="WSK_recordEvent('访问页面','工具 / 装修 / 建材')">
+                    工具 / 装修 / 建材<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box11">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','工具')">工具</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','装修')">装修</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','建材')">建材</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p  onclick="WSK_recordEvent('访问页面','猜你喜欢')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+                <li onclick="WSK_recordEvent('访问页面','家具 / 家饰 / 家纺')">
+                    家具 / 家饰 / 家纺<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box12">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','家具')">家具</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','家饰')">家饰</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','家纺')">家纺</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p  onclick="WSK_recordEvent('访问页面','猜你喜欢')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+                <li onclick="WSK_recordEvent('访问页面','汽车 / 二手车 / 用品')">
+                    汽车 / 二手车 / 用品<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box13">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','汽车')">汽车</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','二手车')">二手车</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','用品')">用品</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p  onclick="WSK_recordEvent('访问页面','猜你喜欢')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+                <li onclick="WSK_recordEvent('访问页面','办公 / DIY / 五金电子')">
+                    办公 / DIY / 五金电子<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box14">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','办公')">办公</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','DIY')">DIY</p>
+                            </div>
+                            <div class="bl">
+                                <p  onclick="WSK_recordEvent('访问页面','五金电子')">五金电子</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p  onclick="WSK_recordEvent('访问页面','猜你喜欢')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+                <li onclick="WSK_recordEvent('访问页面','百货 / 餐厨 / 家庭保健')">
+                    百货 / 餐厨 / 家庭保健<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box15">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p onclick="WSK_recordEvent('访问页面','百货')">百货</p>
+                            </div>
+                            <div class="bl">
+                                <p onclick="WSK_recordEvent('访问页面','餐厨')">餐厨</p>
+                            </div>
+                            <div class="bl">
+                                <p onclick="WSK_recordEvent('访问页面','家庭保健')">家庭保健</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p  onclick="WSK_recordEvent('访问页面','猜你喜欢')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+                <li onclick="WSK_recordEvent('访问页面','学习 / 卡券 / 本地服务')">
+                    学习 / 卡券 / 本地服务<i class="arrow_two"></i>
+                    <div class="hidden_box" id="box16">
+                        <div class="box_left">
+                            <div class="bl">
+                                <p onclick="WSK_recordEvent('访问页面','学习')">学习</p>
+                            </div>
+                            <div class="bl">
+                                <p onclick="WSK_recordEvent('访问页面','卡券')">卡券</p>
+                            </div>
+                            <div class="bl">
+                                <p onclick="WSK_recordEvent('访问页面','本地服务')">本地服务</p>
+                            </div>
+                        </div>
+                        <div class="box_right">
+                            <p onclick="WSK_recordEvent('访问页面','猜你喜欢')">猜你喜欢</p>
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                            <img src="">
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="fourth_two">
+            <div class="ft_top">
+                <ul id="play1">
+                    <li onclick="WSK_recordEvent('访问页面','促销1')">
+                        <img src="images/QQ截图20190225191626.png" class="pic1">
+                    </li>
+                    <li onclick="WSK_recordEvent('访问页面','促销2')">
+                        <img src="images/TB1XotJXQfb_uJkSnhJSuvdDVXa.jpg">
+                    </li>
+                    <li onclick="WSK_recordEvent('访问页面','促销3')">
+                        <img src="images/TB1JNHwKFXXXXafXVXXSutbFXXX.jpg">
+                    </li>
+                    <li onclick="WSK_recordEvent('访问页面','促销4')">
+                        <img src="images/TB183NQapLM8KJjSZFBSutJHVXa.jpg">
+                    </li>
+                    <li onclick="WSK_recordEvent('访问页面','促销5')">
+                        <img src="images/QQ截图20190225192857.png" class="pic1">
+                    </li>
+                </ul>
+                <span id="arrow_left1"> < </span>
+                <span id="arrow_right1"> > </span>
+                <script>
+                    let width1 = 520,
+                        mul1 = document.getElementById('play1'),
+                        mli1 = mul1.getElementsByTagName('li'),
+                        lbtn1 = document.getElementById('arrow_left1'),
+                        rbtn1 = document.getElementById('arrow_right1'),
+                        nums1 = mli1.length;
+                    mul1.style.width = width1*nums1 + 'px';
+                    lbtn1.onclick = function () {
+                        let presentleft1 = parseInt(getComputedStyle(mul1).left);
+                        if (presentleft1 === 0){
+                            mul1.style.left = (-1)*(nums1-1)*width1 + 'px';
+                        }else if(presentleft1%width1 === 0){
+                            mul1.style.left = presentleft1 + width1 + 'px';
+                        }
+                    }
+                    rbtn1.onclick = function () {
+                        let presentleft1 = parseInt(getComputedStyle(mul1).left);
+                        let endleft1 = (-1)*(nums1-1)*width1;
+                        if (presentleft1 === endleft1){
+                            mul1.style.left = 0 + 'px';
+                        }else if(presentleft1%width1 === 0){
+                            mul1.style.left = presentleft1 - width1 + 'px';
+                        }
+                    }
+                </script>
+            </div>
+            <div class="ft_bottom">
+                <ul id="play2">
+                    <li onclick="WSK_recordEvent('访问页面','促销6')">
+                        <img src="images/QQ截图20190226190055.png" class="pic2">
+                    </li>
+                    <li onclick="WSK_recordEvent('访问页面','促销7')">
+                        <img src="images/QQ截图20190226190136.png" class="pic2">
+                    </li>
+                    <li onclick="WSK_recordEvent('访问页面','促销8')">
+                        <img src="images/QQ截图20190226190220.png" class="pic2">
+                    </li>
+                    <li onclick="WSK_recordEvent('访问页面','促销9')">
+                        <img src="images/QQ截图20190226190238.png" class="pic2">
+                    </li>
+                    <li onclick="WSK_recordEvent('访问页面','促销10')">
+                        <img src="images/QQ截图20190226190258.png" class="pic2">
+                    </li>
+                    <li onclick="WSK_recordEvent('访问页面','促销11')">
+                        <img src="images/QQ截图20190226190328.png" class="pic2">
+                    </li>
+                </ul>
+                <span id="arrow_left2"> < </span>
+                <span id="arrow_right2"> > </span>
+                <script>
+                    let width2 = 520,
+                        mul2 = document.getElementById('play2'),
+                        mli2 = mul2.getElementsByTagName('li'),
+                        lbtn2 = document.getElementById('arrow_left2'),
+                        rbtn2 = document.getElementById('arrow_right2'),
+                        nums2 = mli2.length;
+                    mul2.style.width = width2*nums2 + 'px';
+                    lbtn2.onclick = function () {
+                        let presentleft2 = parseInt(getComputedStyle(mul2).left);
+                        if (presentleft2 === 0){
+                            mul2.style.left = (-1)*(nums2-1)*width2 + 'px';
+                        }else if(presentleft2%width2 === 0){
+                            mul2.style.left = presentleft2 + width2 + 'px';
+                        }
+                    }
+                    rbtn2.onclick = function () {
+                        let presentleft2 = parseInt(getComputedStyle(mul2).left);
+                        let endleft2 = (-1)*(nums2-1)*width2;
+                        if (presentleft2 === endleft2){
+                            mul2.style.left = 0 + 'px';
+                        }else if(presentleft2%width2 === 0){
+                            mul2.style.left = presentleft2 - width2 + 'px';
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+        <div class="fourth_three">
+            <div class="fth_top" onclick="WSK_recordEvent('访问页面','潮流数码')">
+                <img src="images/QQ截图20190224203947.png">
+            </div>
+            <div class="fth_bottom">
+                <p onclick="WSK_recordEvent('访问页面','今日热卖')">今日热卖</p>
+                <img src="images/TB1j4LLKpXXXXcbaXXXSutbFXXX.jpg">
+            </div>
+        </div>
+        <div class="fourth_four">
+            <div class="ff_one">
+                <img src="images/TB1yeWeIFXXXXX5XFXXuAZJYXXX-210-210.png_50x50.jpg">
+                <p>Hi! 你好</p>
+            </div>
+            <p class="link1">
+                <a href="">领淘金币抵钱</a>
+                <a href="">会员俱乐部</a>
+            </p>
+            <p class="link2">
+                <a href="" onclick="WSK_recordEvent('访问页面','登录')">登录</a>
+                <a href="" onclick="WSK_recordEvent('访问页面','注册')">注册</a>
+                <a href="" onclick="WSK_recordEvent('访问页面','开店')">开店</a>
+            </p>
+            <div class="ff_two">
+                <a href="">网上有害信息举报专区</a>
+            </div>
+            <div class="ff_three">
+                <ul>
+                    <li id="item1">
+                        <a href="">公告</a>
+                        <div class="block_box" id="box17">
+                            <ul>
+                                <li class="event1"><a href="" onclick="WSK_recordEvent('访问页面','张勇：阿里巴巴不会裁员 将继续开放招聘')">张勇：阿里巴巴不会裁员 将继续开放招聘</a></li>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','淘宝成设计师沃土')">淘宝成设计师沃土</a></li>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','淘宝新人主播劲增')">淘宝新人主播劲增</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li id="item2">
+                        <a href="">规则</a>
+                        <div class="block_box" id="box18">
+                            <ul>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','新增《淘宝网抽检标准')">新增《淘宝网抽检标准</a></li>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','《淘宝禁售商品管理规')">《淘宝禁售商品管理规</a></li>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','新增《淘宝网大家电行')">新增《淘宝网大家电行</a></li>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','《淘宝直播平台管理规')">《淘宝直播平台管理规</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li id="item3">
+                        <a href="">论坛</a>
+                        <div class="block_box" id="box19">
+                            <ul>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','淘宝1212活动招商')">淘宝1212活动招商</a></li>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','中差评功能升级')">中差评功能升级</a></li>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','陌生人拼团上线')">陌生人拼团上线</a></li>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','运营神器年中大促')">运营神器年中大促</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li id="item4">
+                        <a href="">安全</a>
+                        <div class="block_box" id="box20">
+                            <ul>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','魔豆妈妈公益项目')">魔豆妈妈公益项目</a></li>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','让母爱永不打烊！')">让母爱永不打烊！</a></li>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','卖家注意：风险通报！')">卖家注意：风险通报！</a></li>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','售假获刑又起诉！')">售假获刑又起诉！</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li id="item5">
+                        <a href="">公益</a>
+                        <div class="block_box" id="box21">
+                            <ul>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','淘宝公益平台正式更名')">淘宝公益平台正式更名</a></li>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','益起来商家招募即将截')">益起来商家招募即将截</a></li>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','卖家如何设置公益宝贝')">卖家如何设置公益宝贝</a></li>
+                                <li class="event2"><a href="" onclick="WSK_recordEvent('访问页面','公益机构开店全攻略')">公益机构开店全攻略</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="ff_four">
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+                <a href=""></a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
