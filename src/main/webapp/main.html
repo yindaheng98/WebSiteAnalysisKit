@@ -10,6 +10,7 @@
         }
     </style>
     <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="main.js"></script>
     <title>WAK-Home</title>
 </head>
 
@@ -17,9 +18,10 @@
 
 
 <ul class="userMenu">
-    <li class="current" data-id="center"><a href="#">用户分析</a></li>
-    <li data-id="traffic"><a href="#">流量分析</a></li>
-    <li data-id="account"><a href="#">终端分析</a></li>
+    <li class="current" id="center"><a href="#">用户分析</a></li>
+    <li id="traffic"><a href="#">流量分析</a></li>
+    <li id="account"><a href="#">终端分析</a></li>
+    <li id="analysis"><a href="#">事件分析</a></li>
     <!--
     <li><a href="#">事件分析</a></li>
     <li><a href="#">报表统计</a></li>
@@ -30,28 +32,21 @@
 
 </body>
 <script>
-    $(function () {
-        $(".userMenu").on("click", "li", function () {
-            //获取data-id的值
-            window.location.hash = $(this).data("id"); //设置锚点
-            loadInner();
-        });
-
-        function loadInner() {
-            var sId = window.location.hash;
+    (function () {
+        $(".userMenu").on("click", "li", function (event) {
             var pathn, i;
-            switch (sId) {
-                case "#center":
-                    pathn = "user_center.html";
-                    i = 0;
-                    break;
-                case "#traffic":
+            switch (event.currentTarget.getAttribute('id')) {
+                case "traffic":
                     pathn = "user_traffic.html";
                     i = 1;
                     break;
-                case "#account":
+                case "account":
                     pathn = "user_account.html";
                     i = 2;
+                    break;
+                case "analysis":
+                    pathn = "user_analysis.html";
+                    i = 3;
                     break;
                 default:
                     pathn = "user_center.html";
@@ -60,10 +55,8 @@
             }
             $("#content").load(pathn); //加载相对应的内容
             $(".userMenu li").eq(i).addClass("current").siblings().removeClass("current"); //当前列表高亮
-        }
-
-        var sId = window.location.hash;
-        loadInner(sId);
-    });
+        });
+        $("#content").load("user_center.html"); //加载相对应的内容
+    })();
 </script>
 </html>

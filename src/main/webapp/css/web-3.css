@@ -46,7 +46,7 @@
 		letter-spacing:0.75px;
         position:relative;
 		left:33px;
-		top:24px;
+		top:10px;
 	}
 
 	.section1{
@@ -71,10 +71,19 @@
 
 	.section3{
 		width: 354px;
-		height: 320px;
+		height: 475px;
 		border-radius: 10px;
 		background-color: #ffffff;
 		position:relative;
 		left:945px;
-		top:-310px;
+		top:-333px;
+		}
+.section4{
+		width: 514px;
+		height: 475px;
+		border-radius: 10px;
+		background-color: #ffffff;
+		position:relative;
+		left:945px;
+		top:-333px;
 		}
