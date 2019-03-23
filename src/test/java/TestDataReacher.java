@@ -27,17 +27,19 @@ public class TestDataReacher {
         dr.addConstructor(new ProductaccessPerMonthsDataConstructor(12));
         dr.addConstructor(new TotaluserPerDaysDataConstructor(30));
         dr.addConstructor(new TotaluserPerMonthsDataConstructor(12));
+        dr.addConstructor(new TotaluserDataConstructor());
+        dr.addConstructor(new TotalAccessDataConstructor());
     }
 
     @Test
     public void Test() {
+        /*
         try {
-
             PrintStream print = new PrintStream("test.json");  //写好输出位置文件；
             System.setOut(print);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
+        }*/
         String res = dr.reachData().toString();
         System.out.println(res);
 

@@ -22,6 +22,8 @@
     dr.addConstructor(new ProductaccessPerMonthsDataConstructor(12));
     dr.addConstructor(new TotaluserPerDaysDataConstructor(30));
     dr.addConstructor(new TotaluserPerMonthsDataConstructor(12));
+    dr.addConstructor(new TotaluserDataConstructor());
+    dr.addConstructor(new TotalAccessDataConstructor());
     String totalData = dr.reachData().toString();
 %>
 <SCRIPT LANGUAGE="JavaScript">
