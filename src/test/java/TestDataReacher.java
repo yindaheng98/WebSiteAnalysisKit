@@ -33,13 +33,13 @@ public class TestDataReacher {
 
     @Test
     public void Test() {
-        /*
+
         try {
             PrintStream print = new PrintStream("test.json");  //写好输出位置文件；
             System.setOut(print);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }*/
+        }
         String res = dr.reachData().toString();
         System.out.println(res);
 

@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <title></title>
     <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/echarts-all.js"></script>
     <script src="js/excel.js"></script>
-	<script src="js/drawl.js"></script>
+	<script src="js/echarts.js"></script>
     <style>
         .main {
             width: 100%;
@@ -27,56 +26,35 @@
 <body>
 <div class="main">
     <div class="heading1">
-        页面关系分析
+        消费分析
     </div>
     <div style="width: 80px;height: 30px;float:right;margin-right: 100px;">
         <img class="img1" src="resource/export-1.png" alt="" style="width: 100%;height: 100%;CURSOR: pointer"
              onclick="tableToExcel()"></div>
-    <div class="section6">
+    <div class="section1">
 		<div class="heading2">
-            页面关系图：
+            页面访问量：
         </div>
-           <div style="padding:20px;width:100%;height:100%;"> 
-        <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
-               <div id="main" style="width:500px;height:430px;margin-top: 10px;margin-left: 180px;">
-               </div>
- </div>
+			<div id="chart2" style="width: 400px;height: 400px;top: 50px;left: 120px;"></div>
+    </div>
+
+    <div class="section2">
+        <div class="heading2">
+            总消费金额：
+        </div>
+        <div style="width: 100px;height: 100px;font-size: 50px;font-family: Microsoft YaHei UI;color: #47bde1;margin-left: 30px;margin-top: 25px"
+             id="total">
+            651654
+        </div>
+    </div>
+    <div class="section5">
+		<div id="chart1" style="width: 350px;height: 350px;top: 10px;"></div>
     </div>
 
 </div>
 </body>
-	  <script>
-  var myChart = echarts.init(document.getElementById('main'), 'macarons');
-  //创建Nodes
-  nodes=[
-                {category:0, name: '页面1', value : 10, label: '页面1\n（主要）'},
-                {category:1, name: '页面2',value : 2},
-                {category:2, name: '页面4',value : 3},
-                {category:2, name: '页面3',value : 3},
-	  			{category:2, name: '页面5',value : 3},
-	  			{category:2, name: '页面6',value : 3},
-            ],
-    //创建links
-            links=[
-                {source : '页面6', target : '页面1', weight : 1},
-                {source : '页面1', target : '页面6', weight : 2},
-                {source : '页面1', target : '页面3', weight : 1},
-                {source : '页面3', target : '页面2', weight : 2},
-                {source : '页面2', target : '页面3', weight : 2},
-                {source : '页面5', target : '页面2', weight : 3},
-                {source : '页面5', target : '页面3', weight : 1},
-                {source : '页面6', target : '页面4', weight : 1},
-            ]
-categoryArray=[{name:"核心页面"},{name:"重要页面"},{name:"普通页面"}]
-jsondata={"categories":categoryArray,"nodes":nodes,"links":links}  
-//数据格式为Json格式
-createGraph(myChart,jsondata)
-  </script>
-<script>
-    document.getElementById("total").innerHTML = 23333;
-</script>
 	
-	<script>
+<script>
     var chart1 = echarts.init(document.getElementById("chart1"));
 
     // 指定图表的配置项和数据
@@ -91,7 +69,7 @@ createGraph(myChart,jsondata)
                 fontSize: 10,
                 color: '#000'
             },
-            data: ["Android", "Win10"]
+            data: ["低消费", "中消费","高消费"]
         }],
 
         // 提示框
@@ -106,7 +84,7 @@ createGraph(myChart,jsondata)
             top: 'center',              // 描述怎么根据父元素进行定位。top 和 bottom 只有一个可以生效。如果指定 top 或 bottom，则 shape 里的 y、cy 等定位属性不再生效。『父元素』是指：如果是顶层元素，父元素是 echarts 图表容器。如果是 group 的子元素，父元素就是 group 元素。
             left: 'center',             // 同上
             style: {
-                text: '操作系统',       // 文本块文字。可以使用 \n 来换行。[ default: '' ]
+                text: '消费水平',       // 文本块文字。可以使用 \n 来换行。[ default: '' ]
                 fill: '#000',           // 填充色。
                 fontSize: 12,           // 字体大小
                 fontWeight: 'bold'		// 文字字体的粗细，可选'normal'，'bold'，'bolder'，'lighter'
@@ -138,10 +116,66 @@ createGraph(myChart,jsondata)
                     }
                 }
             },
-            data: [{"name":"Android","value":1},{"name":"Win10","value":2}]                      // 系列中的数据内容数组。
+            data: [{"name":"低消费","value":100},{"name":"中消费","value":298},{"name":"高消费","value":34}]                      // 系列中的数据内容数组。
         }]
     };
     // 使用刚指定的配置项和数据显示图表
     chart1.setOption(option)
+</script>
+	<script>
+    var chart2 = echarts.init(document.getElementById("chart2"));
+
+    // 指定图表的配置项和数据
+    option = {
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['访问量']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            data : ['1','2','3','4']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'访问量',
+            type:'bar',
+            data:[50, 10,7, 23],
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name: '平均值'}
+                ]
+            }
+        },
+    ]
+};
+                    
+    // 使用刚指定的配置项和数据显示图表
+    chart2.setOption(option)
 </script>
 </html>

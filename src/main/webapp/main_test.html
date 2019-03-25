@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/web-3.css">
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <title>WSK-Home</title>
+    <style>
+        .current a {
+            color: #000;
+            background: #47bde1;
+        }
+    </style>
+</head>
+<body>
+<div id="content" style="width: 800px;height: 600px"></div>
+</body>
+<script src="main.js"></script>
+<script>
+    var totalData = [];
+    $.ajaxSettings.async = false;
+    $.getJSON('test.json', function (data) {
+        totalData = data;
+        $.ajaxSettings.async = true;
+    });
+</script>
+<script>
+    //$("#content").load("elements/MonthlyUser_data.html"); //加载相对应的内容
+    $("#content").load("elements/DailyUser_data.html"); //加载相对应的内容
+    //$("#content").load("elements/DailyAccess_data.html"); //加载相对应的内容
+    //$("#content").load("elements/MonthlyAccess_data.html"); //加载相对应的内容
+</script>
+</html>

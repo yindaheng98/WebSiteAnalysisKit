@@ -79,7 +79,7 @@ var chart2 = echarts.init(document.getElementById("chart2"));
 	            fontSize: 10,
 	            color: '#000'
        		},
-	        data: ['小米','苹果','诺基亚','华为']
+	        data: ['Firefox','chrome','IE','Edge']
 	    }],
 	    
 	    // 提示框
@@ -103,7 +103,6 @@ var chart2 = echarts.init(document.getElementById("chart2"));
 	    
 	    // 系列列表
 	    series: [{
-	        name: '圆环图系列名称',         // 系列名称
 	        type: 'pie',                    // 系列类型 
 	        center:['50%','50%'],           // 饼图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。[ default: ['50%', '50%'] ]
 	        radius: ['30%', '45%'],         // 饼图的半径，数组的第一项是内半径，第二项是外半径。[ default: [0, '75%'] ]
@@ -127,16 +126,16 @@ var chart2 = echarts.init(document.getElementById("chart2"));
 	            }
 	        },
 	        data: [{
-				name: '小米',
+				name: 'Firefox',
 				value: 320
 			},{
-				name: '苹果',
+				name: 'chrome',
 				value: 586
 			},{
-				name: '诺基亚',
+				name: 'IE',
 				value: 874
 			},{
-				name: '华为',
+				name: 'Edge',
 				value: 725
 			}]                      // 系列中的数据内容数组。
 	    }]
@@ -241,7 +240,7 @@ var chart4 = echarts.init(document.getElementById("chart4"));
 	            fontSize: 10,
 	            color: '#000'
        		},
-	        data: ['小米','苹果','诺基亚','华为']
+	        data: ['联通','移动','电信']
 	    }],
 	    
 	    // 提示框
@@ -265,7 +264,6 @@ var chart4 = echarts.init(document.getElementById("chart4"));
 	    
 	    // 系列列表
 	    series: [{
-	        name: '圆环图系列名称',         // 系列名称
 	        type: 'pie',                    // 系列类型 
 	        center:['50%','50%'],           // 饼图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。[ default: ['50%', '50%'] ]
 	        radius: ['30%', '45%'],         // 饼图的半径，数组的第一项是内半径，第二项是外半径。[ default: [0, '75%'] ]
@@ -289,17 +287,14 @@ var chart4 = echarts.init(document.getElementById("chart4"));
 	            }
 	        },
 	        data: [{
-				name: '小米',
+				name: '移动',
 				value: 320
 			},{
-				name: '苹果',
+				name: '联通',
 				value: 586
 			},{
-				name: '诺基亚',
+				name: '电信',
 				value: 874
-			},{
-				name: '华为',
-				value: 725
 			}]                      // 系列中的数据内容数组。
 	    }]
 	};

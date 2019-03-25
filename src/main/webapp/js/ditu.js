@@ -1,8 +1,4 @@
 ﻿option = {
-    title : {
-        text: '人数统计',
-        subtext: '数据来自jhp'
-    },
     tooltip : {
         trigger: 'item'
     },
@@ -10,12 +6,14 @@
         x:'right',
         selectedMode:false,
     },
-    dataRange: {
-        orient: 'horizontal',
+    visualMap: {
         min: 0,
-        max: 55000,
-        text:['高','低'],           // 文本，默认为数值文本
-        splitNumber:0
+        max: 50000,
+        left:20,
+        bottom:10,
+        text: ['高','低'],// 文本，默认为数值文本
+        color:['#2e51a3','#87CEFA'],
+        calculable: false
     },
     toolbox: {
         show : true,
@@ -26,7 +24,7 @@
             mark : {show: true},
             dataView : {show: true, readOnly: false}
         }
-    },
+    }, 
     series : [
         {
             name: '全国人数分布',
@@ -75,7 +73,7 @@
             ]
         },
     ],
-    animation: false
+    animation: true
 };
 //初始化echarts实例
 var myChart = echarts.init(document.getElementById('container'));

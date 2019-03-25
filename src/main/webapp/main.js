@@ -28,8 +28,13 @@ var option_pie = {
     roseType: 'radius',
     series: [{
         type: 'pie',
-        radius: ['50%', '70%'],
+        radius: ['40%', '70%'],
         avoidLabelOverlap: false,
+		labelLine:{  
+            normal:{  
+               length:0  
+                }  
+        },  
         label: {
             emphasis: {
                 show: true,
@@ -47,14 +52,14 @@ var option_bar = {
         orient: 'horizontal',
         left: 'center',
         dimension: 0,
-        inRange: {color: ['#D7DA8B', '#E15457']}
+        inRange: {color: ['#47bde1', '#2e51a3']}
     }
 };
 
 function getSingleLineOption(option, from_what, title) {
     var option_line = JSON.parse(JSON.stringify(option));
     if (title)
-        option_line.title.text = title;
+        option_line.title.text = "";
     option_line.xAxis[0].data = totalData[from_what][0];
     option_line.series[0].data = totalData[from_what][1];
     return option_line;
@@ -63,12 +68,15 @@ function getSingleLineOption(option, from_what, title) {
 function getItemPieOption(option, from_what, when, title) {
     var option_pie = JSON.parse(JSON.stringify(option));
     if (title)
-        option_pie.title.text = title;
+        option_pie.title.text ="";
     var pie_data = [];
     var where = totalData[from_what][0].indexOf(when);
     if (where !== -1) {
         for (var item in totalData[from_what][1]) {
             var meta = {name: item, value: totalData[from_what][1][item][where]};
+			meta.labelLine = {show: false};
+			meta.label = {show: false};
+                meta.labelLine = {show: false};
             if (meta.value === '0') {
                 meta.label = {show: false};
                 meta.labelLine = {show: false};
@@ -77,18 +85,24 @@ function getItemPieOption(option, from_what, when, title) {
         }
     }
     option_pie.series[0].data = pie_data;
+	//option_pie.series.radius=['50%', '90%'];
     return option_pie;
 }
 
 function getItemBarOption(option, from_what, when, how_many, title) {
     var bar_option = JSON.parse(JSON.stringify(option));
     if (title)
-        bar_option.title.text = title;
+        bar_option.title.text ="";
     var where = totalData[from_what][0].indexOf(when);
     if (where !== -1) {
         var item_datas = [];
-        for (var item in totalData[from_what][1])
-            item_datas.push([item, totalData[from_what][1][item][where]])
+        for (var item in totalData[from_what][1]){
+			item_datas.push([item, totalData[from_what][1][item][where]]);
+			var meta = {name: item, value: totalData[from_what][1][item][where]};
+			meta.name={show: false};
+			meta.value="";
+		}
+            
         item_datas = item_datas.sort((a, b) => (b[1] - a[1]));
         var items = [];
         var datas = [];
@@ -97,6 +111,11 @@ function getItemBarOption(option, from_what, when, how_many, title) {
             datas.push(item_datas[item][1]);
         }
         bar_option.yAxis.data = items;
+		bar_option.yAxis.show = false;
+		bar_option.yAxis.axisLabel = {fontSize:0.00001};
+		bar_option.tooltip={};
+		bar_option.tooltip.trigger="axis";
+		bar_option.tooltip.formatter=items;
         bar_option.series = [{type: 'bar', data: datas}];
         bar_option.visualMap.max = parseInt(datas[0]);
         bar_option.visualMap.min = parseInt(datas[datas.length - 1]);
@@ -118,7 +137,7 @@ var option_multibar = {
 function getUserBarOption(option, where_total, where_new, where_active, title) {
     var userline_option = JSON.parse(JSON.stringify(option));
     if (title)
-        userline_option.title.text = title;
+        userline_option.title.text = "";
     var time_line = [];
     var user_total = [];
     var user_new = [];
@@ -192,17 +211,19 @@ function getUserPieOption(option, where_total, where_sub, sub_label, rest_label,
     var option_pie = JSON.parse(JSON.stringify(option));
     option_pie.roseType = false;
     if (title)
-        option_pie.title.text = title;
+        option_pie.title.text = "";
     var where;
 
     where = totalData[where_total][0].indexOf(when);
     if (where === -1) return option_pie;
     var total_user = totalData[where_total][1][where];
-
+	
     where = totalData[where_sub][0].indexOf(when);
     if (where === -1) return option_pie;
+	//var meta = {name: item, value: totalData[from_what][1][item][where]};
+	//meta.labelLine = {show: false};
+	//meta.label = {show: false};
     var sub_user = totalData[where_sub][1][where];
-
     option_pie.series[0].data = [
         {name: sub_label, value: sub_user},
         {name: rest_label, value: parseInt(total_user) - parseInt(sub_user)}];

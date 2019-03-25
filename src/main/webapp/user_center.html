@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
     <script src="js/jquery-1.11.0.min.js"></script>
-    <script src="js/echarts.min.js"></script>
+    <script src="js/echarts.js"></script>
     <script src="js/excel.js"></script>
     <style>
         .main {
@@ -36,7 +36,10 @@
             每日访问量：
         </div>
 		<div>
-			<div style="float: right;margin-top: -30px;">
+			<div style="float: right;margin-top: -30px;color: #999999;
+		font-size:18px;
+		font-family: Microsoft YaHei UI;
+		letter-spacing:0.75px;">
             总用户数量：
         </div>
         <div style="width: 100px;height: 60px;font-size: 40px;font-family: Microsoft YaHei UI;color: #47bde1;margin-left: 523px;margin-top: 10px;"
@@ -49,20 +52,26 @@
 
    
     <div class="section3">
+		<div class="heading2">
+            每月新增用户量占比:
+        </div>
         <!--饼图-->
-        <div id="NewUser_pie" style="width: 220px;height: 220px;top: 20px;left: 67px;"></div>
-        <div id="ActiveUser_pie" style="width: 220px;height: 220px;top: 20px;left: 67px;"></div>
+        <div id="NewUser_pie" style="width: 180px;height: 180px;top: 20px;left: 67px;"></div>
+		<div class="heading2">
+            每月活跃用户量占比:
+        </div>
+        <div id="ActiveUser_pie" style="width: 180px;height: 180px;top: 20px;left: 67px;"></div>
     </div>
 
 </div>
 </body>
 <script>
-    document.getElementById("total").innerHTML = totalData['总用户量'][0];;
+    document.getElementById("total").innerHTML = totalData['总用户量'][0];
 </script>
 <script>
     (function () {
         var UserLineChart = echarts.init(document.getElementById("User_line"));
-        var UserLineChartOption = getUserBarOption(option_multibar, '月用户总量', '月新增用户数量', '月活跃用户量', ' ');
+        var UserLineChartOption = getUserBarOption(option_multibar, '月用户总量', '月新增用户数量', '月活跃用户量', '每月用户统计');
 
         UserLineChart.setOption(UserLineChartOption);
         var NewUserPieChart = echarts.init(document.getElementById("NewUser_pie"));

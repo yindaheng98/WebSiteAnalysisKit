@@ -21,7 +21,10 @@
             每日访问量：
         </div>
 		<div>
-			<div style="float: right;margin-top: -30px;">
+			<div style="float: right;margin-top: -30px;color: #999999;
+		font-size:18px;
+		font-family: Microsoft YaHei UI;
+		letter-spacing:0.75px;">
             总访问量：
         </div>
         <div style="width: 100px;height: 60px;font-size: 40px;font-family: Microsoft YaHei UI;color: #47bde1;margin-left: 523px;margin-top: 10px;"
@@ -34,13 +37,39 @@
 	
 	
     <div class="section4">
-		 <div id="Access_Productbar" style="width: 240px; height:200px;margin-top: 20px;float: left"></div>
-        <div id="Access_Pagebar" style="width: 240px;height: 200px;float: left;margin-top: 20px;"></div>
-		   <div id="Access_Pagepie" style="width: 200px;height: 200px;float: left;margin-left: 20px;margin-top: 20px;"></div>
+		<div style="float: left;color: #999999;
+		font-size:18px;
+		font-family: 'Microsoft YaHei UI';
+		letter-spacing:0.75px;margin-left:20px">
+            每日产品访问量排行:
+        </div>
+		
+		 <div id="Access_Productbar" style="width: 240px; height:252px;margin-top: -44px;float: left"></div>
+		<div style="float: left;color: #999999;font-size:18px;
+		font-family: 'Microsoft YaHei UI';
+		letter-spacing:0.75px;margin-left:20px">
+            每日产品访问量占比:
+        </div>
         <div id="Access_Productpie" style="width: 200px;height: 200px;float: left;margin-left: 20px;margin-top: 20px;"></div>
+		</div>
+	 <div class="section7">
+		<div style="float: left;color: #999999;
+		font-size:18px;
+		font-family: 'Microsoft YaHei UI';
+		letter-spacing:0.75px;margin-left:20px">
+            每日页面访问量排行:
+        </div>
+		 <div id="Access_Pagebar" style="width: 240px;height: 252px;float: left;margin-top: -44px;"></div>
+		 <div style="float: left;color: #999999;
+		font-size:18px;
+		font-family: 'Microsoft YaHei UI';
+		letter-spacing:0.75px;margin-left:20px">
+            每日页面访问量占比:
+        </div>
+		   <div id="Access_Pagepie" style="width: 200px;height: 200px;float: left;margin-left: 20px;margin-top: 20px;"></div>
+		 
         
-    </div>
-</div>
+	</div>
 </body>
 <script>
     document.getElementById("total").innerHTML = totalData['总访问量'][0];
@@ -49,7 +78,7 @@
     (function () {
 
         var lineChart = echarts.init(document.getElementById("Access_lineChart"));
-        lineChart.setOption(getSingleLineOption(option_line, "日访问量", " "));
+        lineChart.setOption(getSingleLineOption(option_line, "日访问量", "每日访问量"));
 
         var PagepieChart = echarts.init(document.getElementById("Access_Pagepie"));
         PagepieChart.setOption(getItemPieOption(option_pie, "日页面访问量", totalData["日访问量"][0][0], "每日页面访问量占比"));
