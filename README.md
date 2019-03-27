@@ -5,7 +5,9 @@ A series of JavaScript, servlets, and a database with some python script for dat
 
 1. 在服务器上用MoniterDatabase.sql建立数据库
 
-2. 在服务器上运行Analyser.Servlet
+2. 在服务器上项目目录内运行./gradlew.bat appRun
+
+    或是运行./gradlew.bat war生成war包后将./build/libs中生成的war包部署到服务器端jetty容器内
 
 3. 在要进行统计的页面引入JavaScript文件，将Analyser.Servlet的url赋值给WSK_servlet_url
 
