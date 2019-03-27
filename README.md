@@ -25,3 +25,5 @@ Javascript文件引入后会自动监听并向后端发送两种类型的事件�
 “访问页面”事件在页面载入时触发，向后端发送的数据中event_type="访问页面"，没有event_description(具体可见WSK_EventMoniter.js)。
 
 在.py数据分析脚本中有一个有关于“访问产品”的分析，对应的埋点函数写法为recordEvent(“产品点击”,产品名称或编号)。
+
+./src/main/webapp/test_pages中是一个埋点页面示例，具体埋点方法可以参考此页面。
