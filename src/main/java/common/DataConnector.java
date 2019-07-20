@@ -9,11 +9,7 @@ public class DataConnector {
     private static final String password = "MoniterData";//密码
     private Connection conn;
 
-    public DataConnector() {
-        connect();
-    }
-
-    private void connect(){
+    public void connect(){
         try {
             Class.forName(driver);//加载驱动程序
             conn = DriverManager.getConnection(url, user, password);//链接数据库
@@ -29,9 +25,7 @@ public class DataConnector {
     public ResultSet query(String SQL) {
         try {
             connect();
-            ResultSet result=conn.createStatement().executeQuery(SQL);
-            close();
-            return result;
+            return conn.createStatement().executeQuery(SQL);
         } catch (SQLException e) {
             System.out.println("Error SQL:" + SQL);
             e.printStackTrace();

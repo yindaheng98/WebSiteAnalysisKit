@@ -51,10 +51,12 @@ public class DataReacher {
      * @return 构造出的json结构为{getName()的返回值:getData()的返回值,...}
      */
     public JSONObject reachData() {
+        conn.connect();
         JSONObject jo = new JSONObject();
         for (DataConstructor dc : constructors) {
             jo.element(dc.getName(), dc.getData(conn));
         }
+        conn.close();
         return jo;
     }
 

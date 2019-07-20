@@ -4,6 +4,7 @@
 <%@ page import="Constructors.*" %>
 <%
     DataConnector conn = new DataConnector();
+    conn.connect();
     String label, SQL;
     String[][] rs;
     int total = 0;
@@ -25,6 +26,7 @@
     dr.addConstructor(new TotaluserDataConstructor());
     dr.addConstructor(new TotalAccessDataConstructor());
     String totalData = dr.reachData().toString();
+    conn.close();
 %>
 <SCRIPT LANGUAGE="JavaScript">
     var data = [];
