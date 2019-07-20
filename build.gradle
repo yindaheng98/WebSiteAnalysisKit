@@ -4,7 +4,9 @@ plugins {
     id 'idea'
 }
 apply from: 'gretty.plugin'
-
+war {
+    archiveName 'WebSiteAnalysisKit.war'
+}
 group 'fwwbjnu'
 version '1.0-SNAPSHOT'
 
