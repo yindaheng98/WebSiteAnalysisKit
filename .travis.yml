@@ -10,3 +10,6 @@ before_install:
 script:
   - ./gradlew war
   - ls ./build/libs
+  - git clone -b https://$GH_TOKEN/yindaheng98/yindaheng98.top.git
+  - cp -rf ./build/libs/* ./yindaheng98.top/apps/jetty/
+  - ls ./yindaheng98.top/apps/jetty/
