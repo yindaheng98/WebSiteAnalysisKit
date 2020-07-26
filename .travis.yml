@@ -15,5 +15,5 @@ script:
   - ls ./yindaheng98.top/apps/jetty/
   - cd ./yindaheng98.top
   - git add -A
-  - git commit -m 'TravisCI Deploy'
+  - git commit -m 'TravisCI Deploy WebSiteAnalysisKit'
   - git push -u https://$GH_TOKEN@github.com/yindaheng98/yindaheng98.top.git HEAD:master --force
