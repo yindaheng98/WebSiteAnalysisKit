@@ -3,7 +3,8 @@ jdk: oraclejdk8
 branches:
   only:
     - master
+before_install:
+  - chmod +x gradlew
 script:
-  - jdk_switcher use oraclejdk8
   - ./gradlew war
   - ls ./build/libs
