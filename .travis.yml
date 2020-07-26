@@ -4,3 +4,4 @@ branches:
     - master
 script:
   - ./gradlew war
+  - ls ./build/libs
