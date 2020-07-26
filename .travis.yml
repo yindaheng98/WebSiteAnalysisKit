@@ -10,6 +10,10 @@ before_install:
 script:
   - ./gradlew war
   - ls ./build/libs
-  - git clone -b https://$GH_TOKEN/yindaheng98/yindaheng98.top.git
+  - git clone https://$GH_TOKEN@github.com/yindaheng98/yindaheng98.top.git
   - cp -rf ./build/libs/* ./yindaheng98.top/apps/jetty/
   - ls ./yindaheng98.top/apps/jetty/
+  - cd ./yindaheng98.top
+  - git add -A
+  - git commit -m 'TravisCI Deploy'
+  - git push -u https://$GH_TOKEN@github.com/yindaheng98/yindaheng98.top.git HEAD:master --force
