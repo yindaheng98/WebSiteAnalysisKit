@@ -1,7 +1,9 @@
 language: java
+jdk: oraclejdk8
 branches:
   only:
     - master
 script:
+  - jdk_switcher use oraclejdk8
   - ./gradlew war
   - ls ./build/libs
