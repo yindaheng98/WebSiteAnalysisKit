@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class DataConnector {
     private static final String driver = "com.mysql.cj.jdbc.Driver";
-    private static final String url = "jdbc:mysql://localhost:3306/MoniterData?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8";//URL指向访问的数据库名，jsp_data
+    private static final String url = "jdbc:mysql://mysql:3306/MoniterData?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8";//URL指向访问的数据库名，jsp_data
     private static final String user = "MoniterData";//Mysql配置时的用户名
     private static final String password = "MoniterData";//密码
     private Connection conn;
