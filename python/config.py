@@ -15,7 +15,7 @@ dbc=mysql.connector.connect(
     user="MoniterData",
     passwd="MoniterData",
     database="MoniterData",
-    port=3307
+    port=3306
     )
 
 #月用户活跃度(每月有多少天访问网站)达到多少算月活跃用户?

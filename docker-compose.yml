@@ -1,0 +1,17 @@
+version: "3"
+services: 
+  mysql:
+    image: mysql
+    ports: 
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes: 
+      - ./MoniterData.sql:/docker-entrypoint-initdb.d/MoniterData.sql
+  app:
+    build: ./
+    ports: 
+      - "80:8080"
+
+

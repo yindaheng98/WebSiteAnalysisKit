@@ -1,5 +1,6 @@
+set names utf8;
 drop database if exists MoniterData;
-create database MoniterData;
+create database MoniterData DEFAULT CHARACTER SET utf8;
 use MoniterData;
 create table 事件记录
 (
@@ -13,7 +14,7 @@ IP地址 varchar(64) not null,
 事件类型 varchar(255) not null,
 事件描述 text
 );
-drop user if exists MoniterData@localhost;
-create user MoniterData@localhost identified by 'MoniterData';
-grant create,select,update,insert on MoniterData.* to MoniterData@localhost;
+drop user if exists 'MoniterData'@'%';
+create user 'MoniterData'@'%' identified by 'MoniterData';
+grant create,select,update,insert on MoniterData.* to 'MoniterData'@'%';
 flush privileges;
